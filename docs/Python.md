@@ -4,7 +4,7 @@
 def palindromo(cadena):
     #caso base:
     largo=len(cadena)
-    if largo == 1:
+    if largo == 1 or largo == 0:
         print("Es un palíndromo")
     #compruebo, quito letras y rellamo a la función
     elif cadena[largo - 1] is cadena[0]:
