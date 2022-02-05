@@ -109,19 +109,20 @@
 OPOS 2021- EJERCICIO 2.3
 
 c)nombre de clientes que reservaron habitación con entrada en agosto
-
+``` xquery
 //reserva_habitacion/fechaEntrada[@mes="Agosto"]/../@cliente
-
+```
 me devuelve: cliente="C_32555111A"
-
+```
 //cliente[@id="C_32555111A"]/nombre/text()
-
+```
 me devuelve:  Francisco
-
 ahora sustituyo, y quedaría así:
-
+``` xquery
 //cliente[@id=//reserva_habitacion/fechaEntrada[@mes="Agosto"]/../@cliente]/nombre/text()
+```
 
 d)identificador de los clientes cuyo nombre empieza por "F"
-
+``` xquery
 //cliente[starts-with(nombre, "F")]/@id
+```
