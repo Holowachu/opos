@@ -16,6 +16,17 @@ if __name__ == "__main__":
     import sys   
     palindromo(input("Introduce una palabra: "))
 ```
+``` py title="Palíndromo Fácil" linenums="1"
+import sys
+def isPalindrome(s):
+    if s == s[::-1]:
+        print("Palindromo")
+    else:
+        print("No es palindromo")
+
+isPalindrome(input("Introduce una palabra: "))
+```
+
 ``` py title="DNIS" linenums="1"
 import sys
 #declaramos diccionario con las letras DNI, no tiene mucho sentido

@@ -113,7 +113,7 @@ c)nombre de clientes que reservaron habitación con entrada en agosto
 //reserva_habitacion/fechaEntrada[@mes="Agosto"]/../@cliente
 ```
 me devuelve: cliente="C_32555111A"
-```
+``` xquery
 //cliente[@id="C_32555111A"]/nombre/text()
 ```
 me devuelve:  Francisco
