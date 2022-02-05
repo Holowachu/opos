@@ -1,5 +1,6 @@
 # Python
 
+## Scripts
 ``` py title="Palíndromo" linenums="1"
 def palindromo(cadena):
     #caso base:

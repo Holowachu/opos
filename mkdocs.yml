@@ -2,6 +2,8 @@ site_name: Opocompis
 theme:
   name: material
   language: es
+  features:
+    - toc.integrate
   palette: 
     - scheme: default
       toggle:
