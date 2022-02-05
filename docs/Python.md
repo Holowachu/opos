@@ -4,7 +4,7 @@
 def palindromo(cadena):
     #caso base:
     largo=len(cadena)
-    if largo == 1 or largo == 0:
+    if largo <= 1:
         print("Es un palíndromo")
     #compruebo, quito letras y rellamo a la función
     elif cadena[largo - 1] is cadena[0]:
@@ -25,6 +25,21 @@ def isPalindrome(s):
         print("No es palindromo")
 
 isPalindrome(input("Introduce una palabra: "))
+```
+``` py title="Palíndromo Recursivo" linenums="1"
+import sys
+def palindromo(cadena):
+    #caso base:
+    largo=len(cadena)
+    if largo <= 1:
+       print("Es un palindromo")
+    elif cadena[0] == cadena[largo-1] :
+        cadena = cadena[1:-1]
+        palindromo(cadena)
+    else:
+       print("No es un palindromo")
+
+palindromo(input("Introduce una palabra: "))
 ```
 
 ``` py title="DNIS" linenums="1"
