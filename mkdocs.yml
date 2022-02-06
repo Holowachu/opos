@@ -1,4 +1,6 @@
 site_name: Opocompis
+extra_css:
+  - stylesheets/extra.css
 theme:
   name: material
   language: es
