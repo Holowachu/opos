@@ -126,11 +126,8 @@ d)identificador de los clientes cuyo nombre empieza por "F"
 ``` xquery
 //cliente[starts-with(nombre, "F")]/@id
 ```
-<<<<<<< HEAD
 
 TEST Víctor
-=======
 ```
 TEST Luis
 ```
->>>>>>> 856f54afc84c1961b12d54d07ec595e7a00f6d3d
