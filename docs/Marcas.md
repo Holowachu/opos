@@ -105,7 +105,7 @@
     </xsl:template>
 </xsl:stylesheet>
 ```
-
+## Ejemplo Título 2
 OPOS 2021- EJERCICIO 2.3
 
 c)nombre de clientes que reservaron habitación con entrada en agosto
@@ -125,11 +125,4 @@ ahora sustituyo, y quedaría así:
 d)identificador de los clientes cuyo nombre empieza por "F"
 ``` xquery
 //cliente[starts-with(nombre, "F")]/@id
-```
-
-TEST Víctor
-```
-TEST Luis
-```
-TEST Fernando
 ```
