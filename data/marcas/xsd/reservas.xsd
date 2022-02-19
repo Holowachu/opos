@@ -1,0 +1,62 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="reservas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reserva_habitación" type="tipoReservaHabitación" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="reserva_salón" type="tipoReservaSalón" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="cliente" type="tipoCliente" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:group name="grupoReserva">
+        <xs:sequence>
+            <xs:element name="fechaEntrada" type="tipoFecha" />
+            <xs:element name="fechaSalida" type="tipoFecha" />
+            <xs:element name="observaciones" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:group>
+
+    <xs:complexType name="tipoFecha">
+        <xs:attribute name="año" type="xs:integer" />
+        <xs:attribute name="mes" type="xs:string" />
+        <xs:attribute name="día" type="xs:integer" />
+    </xs:complexType>
+
+    <xs:simpleType name="tipoTipoHabitación">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Individual" />
+            <xs:enumeration value="Doble" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipoReservaHabitación">
+        <xs:group ref="grupoReserva" />
+        <xs:attribute name="cliente" type="tipoIdCliente" />
+        <xs:attribute name="opciones" type="xs:string" />
+        <xs:attribute name="tipoHabitación" type="tipoTipoHabitación" />
+    </xs:complexType>
+
+    <xs:complexType name="tipoReservaSalón">
+        <xs:group ref="grupoReserva" />
+        <xs:attribute name="cliente" type="tipoIdCliente"/>
+    </xs:complexType>
+
+    <xs:simpleType name="tipoIdCliente">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="C_[0-9]{8}[A-Z]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipoCliente" mixed="true">
+        <xs:choice>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="apellidos" type="xs:string"/>
+                <xs:element name="móvil" type="xs:integer"/>
+            </xs:sequence>
+            <xs:element name="empleado" type="xs:string"/>
+        </xs:choice>
+        <xs:attribute name="id" type="tipoIdCliente"/>
+    </xs:complexType>
+</xs:schema>

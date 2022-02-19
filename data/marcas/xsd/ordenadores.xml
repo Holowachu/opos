@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ordenadores xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ordenadores1.xsd">
+    <sistemaOperativo codigo="WXP">Windows XP</sistemaOperativo>
+    <sistemaOperativo codigo="W7">Windows 7</sistemaOperativo>
+    <sistemaOperativo codigo="W10">Windows 10</sistemaOperativo>
+    <sistemaOperativo codigo="U18">Ubuntu 18.04</sistemaOperativo>
+    <taller>
+        <codigo>10</codigo>
+        <lugar>Planta 1</lugar>
+        <numOrdenadores>30</numOrdenadores>
+    </taller>
+    <sala impresora="true">
+        <codigo>11</codigo>
+        <lugar>Planta 2</lugar>
+        <numServidores>30</numServidores>
+    </sala>
+    <ordenador numero="200.300.1">
+        <sistemaOperativo codigo="WXP" />
+    </ordenador>
+    <ordenador numero="200.300.20">
+        <sistemaOperativo codigo="W10" />
+    </ordenador>
+    <ordenador numero="200.300.300">
+        <sistemaOperativo codigo="W7" />
+    </ordenador>
+    <ordenador numero="200.300.40">
+        <sistemaOperativo codigo="U18" />
+    </ordenador>
+    <ordenador numero="200.300.5">
+        <sistemaOperativo codigo="W7" />
+    </ordenador>
+    <ordenador numero="200.300.75">
+        <sistemaOperativo codigo="W10" />
+    </ordenador>
+</ordenadores>

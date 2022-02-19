@@ -1,0 +1,12 @@
+<!ELEMENT informacion (software+,modulo+)>
+<!ELEMENT software (nome,dataPubli?)>
+<!ELEMENT nome (#PCDATA)>
+<!ELEMENT dataPubli EMPTY>
+<!ELEMENT modulo (titulo)>
+<!ELEMENT titulo (#PCDATA)>
+<!ATTLIST informacion curso CDATA #FIXED "1">
+<!ATTLIST software codigo ID #REQUIRED
+                    tipo (gratuito|comercial) #IMPLIED>
+<!ATTLIST dataPubli ano CDATA "2015"
+                    mes CDATA #REQUIRED>
+<!ATTLIST modulo usa IDREFS #IMPLIED>
