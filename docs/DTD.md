@@ -41,6 +41,56 @@ XML:
 <!ELEMENT body (#PCDATA)>
 ```
 
+##Declaración de entidades
+
+###Entidades internas
+Son básicamente constantes.
+```dtd title="intEntity.dtd" linenums="1"
+<!ENTITY ciudad "Santiago de Compostela">
+```
+``` xml title="intEntity.xml" linenums="1"
+<direccion>
+    <calle>Ponzano</calle>
+    <numero>66</numero>
+    <poblacion>&ciudad;</poblacion>
+    <cp>15891</cp>
+</direccion>
+```
+
+###Entidades externas
+Vinculan otros documentos externos a nuestro XML.
+
+####Externas parseadas
+El documento externo debe contener XML válido.
+```dtd title="extParsedEntity.dtd" linenums="1"
+<!ENTITY capitulo1 SYSTEM "capitulo1.xml">
+```
+``` xml title="extParsedEntity.xml" linenums="1"
+<entidadelibro>
+   <tema>Ejemplo de entidad externa</tema>
+   &capitulo1;
+</entidadelibro>
+```
+``` xml title="capitulo1.xml" linenums="1"
+<?xml version="1.0" encoding="UTF-8"?> <capitulo>
+     <para>Este es el primero capitulo</para>
+</capitulo>
+```
+
+####Externas no parseadas
+El documento externo no es XML.
+```dtd title="extNoParsedEntity.dtd" linenums="1"
+<!ELEMENT fruta EMPTY>
+<!ATTLIST fruta foto ENTITY #REQUIRED>
+
+<!NOTATION gif SYSTEM "image/gif">
+
+<!ENTITY manzana SYSTEM "manzana.gif" NDATA gif>
+```
+``` xml title="extNoParsedEntity.xml" linenums="1"
+<fruta foto="manzana"/>
+```
+
 ##Declaración de elementos
 
 ``` dtd title="element.dtd" linenums="1"
@@ -171,4 +221,19 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 <payment type="check" />
 ```
 
-##Declaración de entidades
+##Ejercicios resueltos de examen
+
+``` xml title="informacion.xml"
+--8<--​ ".data/dtd/informacion.xml"
+```
+
+Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuenta lo siguiente:
+* Siempre existirán elementos software y modulo.
+* El elemento informacion tendrá un atributo llamado curso que siempre tendrá el valor 1.
+* El codigo será único y el tipo podrá tomar los valores gratuito o comercial.
+* La fecha de publicación tendrá por defecto el año 2015 y siempre indicará el mes.
+* Debemos validar que los módulos usen el software existente en el documento XML.
+
+``` dtd title="informacionG.dtd"
+--8<--​ ".data/dtd/informacionG.dtd"
+```
