@@ -61,7 +61,7 @@ Son básicamente constantes.
 Vinculan otros documentos externos a nuestro XML.
 
 ####Externas parseadas
-El documento externo debe contener XML válido.
+El documento externo **debe contener XML válido**.
 ```dtd title="extParsedEntity.dtd" linenums="1"
 <!ENTITY capitulo1 SYSTEM "capitulo1.xml">
 ```
@@ -72,13 +72,14 @@ El documento externo debe contener XML válido.
 </entidadelibro>
 ```
 ``` xml title="capitulo1.xml" linenums="1"
-<?xml version="1.0" encoding="UTF-8"?> <capitulo>
+<?xml version="1.0" encoding="UTF-8"?>
+<capitulo>
      <para>Este es el primero capitulo</para>
 </capitulo>
 ```
 
 ####Externas no parseadas
-El documento externo no es XML.
+El documento externo **no es XML**.
 ```dtd title="extNoParsedEntity.dtd" linenums="1"
 <!ELEMENT fruta EMPTY>
 <!ATTLIST fruta foto ENTITY #REQUIRED>
@@ -97,23 +98,23 @@ El documento externo no es XML.
 <!ELEMENT nombreElemento (tipoDeContido)>
 ```
 ###Tipos de contenido más usados:
-* EMPTY - Elementos vacíos.
+* **EMPTY** - Elementos vacíos.
 ```dtd title="empty.dtd" linenums="1"
 <!ELEMENT br EMPTY>
 ```
 ``` xml title="empty.xml" linenums="1"
 <br />
 ```
-* (#PCDATA) - Elementos con texto.
+* **(#PCDATA)** - Elementos con texto.
 ```dtd title="pcdata.dtd" linenums="1"
 <!ELEMENT nombre (#PCDATA)>
 ```
 ``` xml title="pcdata.xml" linenums="1"
 <nombre>Juan Carlos</nombre>
 ```
-* (subElemento1, subElemento2, subElemento3, ...) - Secuencia de subelementos.
-* (subElemento1 | subElemento2 | subElemento3 | ...) - Elección de entre varios subelementos.
-* (#PCDATA | subElemento1 | subElemento2 | ...)* - Mezcla de texto con subelementos.
+* **(subElemento1, subElemento2, subElemento3, ...)** - Secuencia de subelementos.
+* **(subElemento1 | subElemento2 | subElemento3 | ...)** - Elección de entre varios subelementos.
+* **(#PCDATA | subElemento1 | subElemento2 | ...)\*** - Mezcla de texto con subelementos.
 ```dtd title="mixed.dtd" linenums="1"
 <!ELEMENT parte (#PCDATA | padre | hijo | fecha)*>
 ```
@@ -123,28 +124,28 @@ El documento externo no es XML.
   ha sido apercibido con un parte por mala conducta en clase con fecha <fecha>20/02/2021</fecha>.
 </parte>
 ```
-* (subElemento1, subElemento2, (subElemento3 | subElemento4)) - Combinaciones de secuencias y elecciones.
+* **(subElemento1, subElemento2, (subElemento3 | subElemento4))** - Combinaciones de secuencias y elecciones.
 
 ###Indicadores de ocurrencia
 
 Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las mezclas).
-- \* - Cero o más veces.
--  \+ - Una o más veces.
--  ? - Cero o una vez.
+- **\*** - Cero o más veces.
+-  **\+** - Una o más veces.
+-  **?** - Cero o una vez.
 
 ##Declaración de atributos
 ``` dtd title="attribute.dtd" linenums="1"
 <!ATTLIST nombreDelElemento nombreDelAtributo tipoDeAtributo valorDelAtributo>
 ```
 ###Tipos de atributos más frecuentes:
-* CDATA - Texto.
-* (en1|en2|en3|...) - Elección de un valor entre una lista enumerada.
-* ID - Identificador único en el XML.
-* IDREF - Referencia a un ID existente en el XML.
-* IDREFS - Varios IDREF separados por espacios.
-* NMTOKEN - Texto sin espacios formado por letras, números y los caracteres **.**, **-** y **_**  (para fechas, valores numéricos...).
-* NMTOKENS - Varios NMTOKEN separados por espacios.
-* NOTATION - Notación previamente definida (habitualmente se usa para definir formatos de datos no XML como entidades no parseadas). Pueden ser privadas (SYSTEM) o públicas (PUBLIC).
+* **CDATA** - Texto.
+* **(en1|en2|en3|...)** - Elección de un valor entre una lista enumerada.
+* **ID** - Identificador único en el XML.
+* **IDREF** - Referencia a un ID existente en el XML.
+* **IDREFS** - Varios IDREF separados por espacios.
+* **NMTOKEN** - Texto sin espacios formado por letras, números y los caracteres **.**, **-** y **_**  (para fechas, valores numéricos...).
+* **NMTOKENS** - Varios NMTOKEN separados por espacios.
+* **NOTATION** - Notación previamente definida (habitualmente se usa para definir formatos de datos no XML como entidades no parseadas). Pueden ser privadas (SYSTEM) o públicas (PUBLIC).
 ```dtd title="notationAtt.dtd" linenums="1"
 <!ELEMENT documentos (documento)*>
 <!ELEMENT documento (#PCDATA)>
@@ -161,8 +162,7 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
    <documento version="h4"><!-- Código del documento 4. --></documento>
 </documentos>
 ```
-* ENTITY - Entidades no parseadas (no son datos XML, p.ej. Imágenes). Deben ir vinculadas a una notación definida con NDATA.
-* ENTITIES - Varias ENTITY separadas por espacios.
+* **ENTITY** - Entidades no parseadas (no son datos XML, p.ej. Imágenes). Deben ir vinculadas a una notación definida con NDATA.
 
 ```dtd title="entityAtt.dtd" linenums="1"
 <!ELEMENT frutas (fruta)*>
@@ -180,9 +180,10 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
    <fruta foto="naranja"/>
 </frutas>
 ```
+* **ENTITIES** - Varias ENTITY separadas por espacios.
 
 ###Modificadores de presencia/valor:
-* "Valor por defecto" - Atributo con valor por defecto.
+* **"Valor por defecto"** - Atributo con valor por defecto.
 ```dtd title="defaultAtt.dtd" linenums="1"
 <!ELEMENT square EMPTY>
 <!ATTLIST square width CDATA "0">
@@ -190,14 +191,14 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 ``` xml title="defaultAtt.xml" linenums="1"
 <square width="100" />
 ```
-* \#REQUIRED - Atributo obligatorio.
+* **\#REQUIRED** - Atributo obligatorio.
 ```dtd title="requiredtAtt.dtd" linenums="1"
 <!ATTLIST person number CDATA #REQUIRED>
 ```
 ``` xml title="requiredAtt.xml" linenums="1"
 <person number="5677" />
 ```
-* \#IMPLIED - Atributo opcional.
+* **\#IMPLIED** - Atributo opcional.
 ```dtd title="impliedtAtt.dtd" linenums="1"
 <!ATTLIST contact fax CDATA #IMPLIED>
 ```
@@ -205,20 +206,12 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 <contact />
 ```
 
-* \#FIXED "Valor fijo" - Atributo con valor fijo.
+* **\#FIXED "Valor fijo"** - Atributo con valor fijo.
 ```dtd title="fixedtAtt.dtd" linenums="1"
 <!ATTLIST sender company CDATA #FIXED "Microsoft">
 ```
 ``` xml title="fixedAtt.xml" linenums="1"
 <sender company="Microsoft" />
-```
-
-* (en1|en2|en3|...) "en1" - Atributo enumerado con valor por defecto.
-```dtd title="enumAtt.dtd" linenums="1"
-<!ATTLIST payment type (check|cash) "cash">
-```
-``` xml title="enumAtt.xml" linenums="1"
-<payment type="check" />
 ```
 
 ##Ejercicios resueltos de examen
