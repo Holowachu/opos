@@ -78,9 +78,9 @@ XML:
 ###Indicadores de ocurrencia
 
 Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las mezclas).
-* \* - Cero o más veces.
-*  \+ - Una o más veces.
-*  ? - Cero o una vez.
+- \* - Cero o más veces.
+-  \+ - Una o más veces.
+-  ? - Cero o una vez.
 
 ##Declaración de atributos
 ``` dtd title="attribute.dtd" linenums="1"
@@ -102,7 +102,7 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 
 <!NOTATION h5 PUBLIC "HTML 5">
 <!NOTATION h4 PUBLIC "HTML 4.01">
-´´´
+```
 ``` xml title="notationAtt.xml" linenums="1"
 <documentos>
    <documento version="h4"><!-- Código del documento 1. --></documento>
