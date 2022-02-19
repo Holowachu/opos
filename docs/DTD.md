@@ -128,7 +128,7 @@ El documento externo **no es XML**.
 
 ###Indicadores de ocurrencia
 
-Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las mezclas).
+Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las mezclas):
 * **\*** - Cero o más veces.
 * **\+** - Una o más veces.
 * **?** - Cero o una vez.
@@ -216,8 +216,8 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 
 ##Ejercicios resueltos de examen
 
-``` title="informacion.xml"
---8<--​ ".data/marcas/dtd/informacion.xml"
+```xml title="informacion.xml"
+--8<--​ "../data/marcas/dtd/informacion.xml"
 ```
 
 Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuenta lo siguiente:
@@ -227,6 +227,6 @@ Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuen
 * La fecha de publicación tendrá por defecto el año 2015 y siempre indicará el mes.
 * Debemos validar que los módulos usen el software existente en el documento XML.
 
-``` title="informacionG.dtd"
---8<--​ ".data/marcas/dtd/informacionG.dtd"
+```dtd title="informacionG.dtd"
+--8<--​ "../data/marcas/dtd/informacionG.dtd"
 ```
