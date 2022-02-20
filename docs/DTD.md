@@ -180,7 +180,6 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 </documentos>
 ```
 * **ENTITY** - Entidades no parseadas (no son datos XML, p.ej. Imágenes). Deben ir vinculadas a una notación definida con NDATA.
-
 ```dtd title="entityAtt.dtd" linenums="1"
 <!ELEMENT frutas (fruta)*>
 <!ELEMENT fruta EMPTY>
@@ -232,10 +231,8 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 ```
 
 ## Ejercicios resueltos de examen
-```
---8<--​
-".informacion.xml"
---8<--​
+``` xml title="informacion.xml"
+--8<-- "../data/marcas/dtd/informacion.xml"
 ```
 
 
@@ -247,5 +244,5 @@ Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuen
 * Debemos validar que los módulos usen el software existente en el documento XML.
 
 ``` dtd title="informacionG.dtd"
---8<--​ "../data/marcas/dtd/informacionG.dtd"
+--8<-- "../data/marcas/dtd/informacionG.dtd"
 ```
