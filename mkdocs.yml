@@ -16,7 +16,7 @@ theme:
 markdown_extensions:
     - pymdownx.inlinehilite
     - pymdownx.snippets:
-        base_path: '/data/'
+        base_path: './data/'
     - pymdownx.superfences
     - pymdownx.highlight:
         anchor_linenums: true
