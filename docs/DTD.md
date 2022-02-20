@@ -164,7 +164,6 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 * **NMTOKEN** - Texto sin espacios formado por letras, números y los caracteres **.**, **-** y **_**  (para fechas, valores numéricos...).
 * **NMTOKENS** - Varios NMTOKEN separados por espacios.
 * **NOTATION** - Notación previamente definida (habitualmente se usa para definir formatos de datos no XML como entidades no parseadas). Pueden ser privadas (SYSTEM) o públicas (PUBLIC).
-
 ```dtd title="notationAtt.dtd" linenums="1"
 <!ELEMENT documentos (documento)*>
 <!ELEMENT documento (#PCDATA)>
@@ -173,7 +172,6 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 <!NOTATION h5 PUBLIC "HTML 5">
 <!NOTATION h4 PUBLIC "HTML 4.01">
 ```
-
 ``` xml title="notationAtt.xml" linenums="1"
 <documentos>
    <documento version="h4"><!-- Código del documento 1. --></documento>
@@ -194,7 +192,6 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 <!ENTITY manzana SYSTEM "manzana.gif" NDATA gif>
 <!ENTITY naranja SYSTEM "naranja.gif" NDATA gif>
 ```
-
 ``` xml title="entityAtt.xml" linenums="1"
 <frutas>
    <fruta foto="manzana"/>
