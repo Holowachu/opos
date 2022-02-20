@@ -238,6 +238,7 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 ```
 
 Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuenta lo siguiente:
+
 * Siempre existirán elementos software y modulo.
 * El elemento informacion tendrá un atributo llamado curso que siempre tendrá el valor 1.
 * El codigo será único y el tipo podrá tomar los valores gratuito o comercial.
