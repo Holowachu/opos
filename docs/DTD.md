@@ -245,6 +245,6 @@ Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuen
 
 ``` dtd title="informacionG.dtd"
 --8<--
-"../data/marcas/dtd/informacionG.dtd"
+"marcas/dtd/informacionG.dtd"
 --8<--
 ```
