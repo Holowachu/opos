@@ -110,7 +110,6 @@ poboacion CDATA #REQUIRED">
 ```
 
 ## Declaración de elementos
-
 ``` dtd title="element.dtd" linenums="1"
 <!ELEMENT nombreElemento (tipoDeContido)>
 ```
