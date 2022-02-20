@@ -233,7 +233,9 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 
 ## Ejercicios resueltos de examen
 ```
---8<--​ ".informacion.xml"
+--8<--​
+".informacion.xml"
+--8<--​
 ```
 
 
