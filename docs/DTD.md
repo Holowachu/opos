@@ -247,5 +247,7 @@ Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuen
 * Debemos validar que los módulos usen el software existente en el documento XML.
 
 ``` dtd title="informacionG.dtd"
---8<-- "../data/marcas/dtd/informacionG.dtd" --8<--
+--8<--
+"../data/marcas/dtd/informacionG.dtd"
+--8<--
 ```
