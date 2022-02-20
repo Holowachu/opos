@@ -1,7 +1,7 @@
-#DTD
+# DTD
 
-##Vinculación con DTD
-###DTD interno
+## Vinculación con DTD
+### DTD interno
 
 ``` xml title="note.xml" linenums="1"
 <?xml version="1.0" standalone="yes"?>
@@ -20,7 +20,7 @@
 </note>
 ```
 
-###DTD externo
+### DTD externo
 
 XML:
 ``` xml title="note.xml" linenums="1"
@@ -41,9 +41,9 @@ XML:
 <!ELEMENT body (#PCDATA)>
 ```
 
-##Declaración de entidades
+## Declaración de entidades
 
-###Entidades internas
+### Entidades internas
 Son básicamente constantes.
 ```dtd title="intEntity.dtd" linenums="1"
 <!ENTITY ciudad "Santiago de Compostela">
@@ -57,10 +57,10 @@ Son básicamente constantes.
 </direccion>
 ```
 
-###Entidades externas
+### Entidades externas
 Vinculan otros documentos externos a nuestro XML.
 
-####Externas parseadas
+#### Externas parseadas
 El documento externo **debe contener XML válido**.
 ```dtd title="extParsedEntity.dtd" linenums="1"
 <!ENTITY capitulo1 SYSTEM "capitulo1.xml">
@@ -78,7 +78,7 @@ El documento externo **debe contener XML válido**.
 </capitulo>
 ```
 
-####Externas no parseadas
+#### Externas no parseadas
 El documento externo **no es XML**.
 ```dtd title="extNoParsedEntity.dtd" linenums="1"
 <!ELEMENT fruta EMPTY>
@@ -92,12 +92,29 @@ El documento externo **no es XML**.
 <fruta foto="manzana"/>
 ```
 
-##Declaración de elementos
+### Entidades de parámetro
+
+Agrupan código DTD para poder reutilizarlo.
+
+```dtd title="paramEntity.dtd" linenums="1"
+
+<!ENTITY % dirección
+"rua CDATA #REQUIRED
+numero CDATA #IMPLIED
+poboacion CDATA #REQUIRED">
+
+<!ELEMENT orixen EMPTY>
+<!ELEMENT destino EMPTY>
+<!ATTLIST orixen %dirección;>
+<!ATTLIST destino %dirección;>
+```
+
+## Declaración de elementos
 
 ``` dtd title="element.dtd" linenums="1"
 <!ELEMENT nombreElemento (tipoDeContido)>
 ```
-###Tipos de contenido más usados:
+### Tipos de contenido más usados:
 * **EMPTY** - Elementos vacíos.
 ```dtd title="empty.dtd" linenums="1"
 <!ELEMENT br EMPTY>
@@ -126,7 +143,7 @@ El documento externo **no es XML**.
 ```
 * **(subElemento1, subElemento2, (subElemento3 | subElemento4))** - Combinaciones de secuencias y elecciones.
 
-###Indicadores de ocurrencia
+### Indicadores de ocurrencia
 
 Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las mezclas):
 
@@ -134,11 +151,11 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 * **\+** - Una o más veces.
 * **?** - Cero o una vez.
 
-##Declaración de atributos
+## Declaración de atributos
 ``` dtd title="attribute.dtd" linenums="1"
 <!ATTLIST nombreDelElemento nombreDelAtributo tipoDeAtributo valorDelAtributo>
 ```
-###Tipos de atributos más frecuentes:
+### Tipos de atributos más frecuentes:
 * **CDATA** - Texto.
 * **(en1|en2|en3|...)** - Elección de un valor entre una lista enumerada.
 * **ID** - Identificador único en el XML.
@@ -167,7 +184,6 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 ```
 
 * **ENTITY** - Entidades no parseadas (no son datos XML, p.ej. Imágenes). Deben ir vinculadas a una notación definida con NDATA.
-
 ```dtd title="entityAtt.dtd" linenums="1"
 <!ELEMENT frutas (fruta)*>
 <!ELEMENT fruta EMPTY>
@@ -188,7 +204,7 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 
 * **ENTITIES** - Varias ENTITY separadas por espacios.
 
-###Modificadores de presencia/valor:
+### Modificadores de presencia/valor:
 * **"Valor por defecto"** - Atributo con valor por defecto.
 ```dtd title="defaultAtt.dtd" linenums="1"
 <!ELEMENT square EMPTY>
