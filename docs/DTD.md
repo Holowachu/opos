@@ -129,6 +129,7 @@ El documento externo **no es XML**.
 ###Indicadores de ocurrencia
 
 Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las mezclas):
+
 * **\*** - Cero o más veces.
 * **\+** - Una o más veces.
 * **?** - Cero o una vez.
@@ -146,6 +147,7 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 * **NMTOKEN** - Texto sin espacios formado por letras, números y los caracteres **.**, **-** y **_**  (para fechas, valores numéricos...).
 * **NMTOKENS** - Varios NMTOKEN separados por espacios.
 * **NOTATION** - Notación previamente definida (habitualmente se usa para definir formatos de datos no XML como entidades no parseadas). Pueden ser privadas (SYSTEM) o públicas (PUBLIC).
+
 ```dtd title="notationAtt.dtd" linenums="1"
 <!ELEMENT documentos (documento)*>
 <!ELEMENT documento (#PCDATA)>
@@ -154,6 +156,7 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 <!NOTATION h5 PUBLIC "HTML 5">
 <!NOTATION h4 PUBLIC "HTML 4.01">
 ```
+
 ``` xml title="notationAtt.xml" linenums="1"
 <documentos>
    <documento version="h4"><!-- Código del documento 1. --></documento>
@@ -162,6 +165,7 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
    <documento version="h4"><!-- Código del documento 4. --></documento>
 </documentos>
 ```
+
 * **ENTITY** - Entidades no parseadas (no son datos XML, p.ej. Imágenes). Deben ir vinculadas a una notación definida con NDATA.
 
 ```dtd title="entityAtt.dtd" linenums="1"
@@ -174,12 +178,14 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 <!ENTITY manzana SYSTEM "manzana.gif" NDATA gif>
 <!ENTITY naranja SYSTEM "naranja.gif" NDATA gif>
 ```
+
 ``` xml title="entityAtt.xml" linenums="1"
 <frutas>
    <fruta foto="manzana"/>
    <fruta foto="naranja"/>
 </frutas>
 ```
+
 * **ENTITIES** - Varias ENTITY separadas por espacios.
 
 ###Modificadores de presencia/valor:
@@ -215,18 +221,18 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 ```
 
 ##Ejercicios resueltos de examen
+``` xml
+--8<-- "./data/marcas/dtd/informacion.xml"
 ```
---8<--​ ".informacion.xml"
-```
-
 
 Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuenta lo siguiente:
+
 * Siempre existirán elementos software y modulo.
 * El elemento informacion tendrá un atributo llamado curso que siempre tendrá el valor 1.
 * El codigo será único y el tipo podrá tomar los valores gratuito o comercial.
 * La fecha de publicación tendrá por defecto el año 2015 y siempre indicará el mes.
 * Debemos validar que los módulos usen el software existente en el documento XML.
 
-```dtd title="informacionG.dtd"
---8<--​ "../data/marcas/dtd/informacionG.dtd"
+``` dtd title="informacionG.dtd"
+--8<-- "./data/marcas/dtd/informacionG.dtd"
 ```
