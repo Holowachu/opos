@@ -215,8 +215,9 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 ```
 
 ##Ejercicios resueltos de examen
-
+```
 --8<--​ "../data/marcas/dtd/informacion.xml"
+```
 
 
 Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuenta lo siguiente:
