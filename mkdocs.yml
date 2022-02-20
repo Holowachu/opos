@@ -15,8 +15,7 @@ theme:
         name: Switch to light mode
 markdown_extensions:
     - pymdownx.inlinehilite
-    - pymdownx.snippets:
-        base_path: './data/'
+    - pymdownx.snippets
     - pymdownx.superfences
     - pymdownx.highlight:
         anchor_linenums: true
