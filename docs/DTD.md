@@ -242,13 +242,11 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 ```
 
 Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuenta lo siguiente:
-
 * Siempre existirán elementos software y modulo.
 * El elemento informacion tendrá un atributo llamado curso que siempre tendrá el valor 1.
 * El codigo será único y el tipo podrá tomar los valores gratuito o comercial.
 * La fecha de publicación tendrá por defecto el año 2015 y siempre indicará el mes.
 * Debemos validar que los módulos usen el software existente en el documento XML.
-
 ``` dtd title="informacionG.dtd"
 --8<-- "./data/marcas/dtd/informacionG.dtd"
 ```
