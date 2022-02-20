@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE informacion SYSTEM "informacionG.dtd">
+<informacion>
+    <software codigo="N1" tipo="gratuito">
+        <nome>Notepad++</nome>
+        <dataPubli ano="2015" mes="marzo" />
+    </software>
+    <software codigo="X1">
+        <nome>XML Copy Editor</nome>
+        <dataPubli ano="2012" mes="maio" />
+    </software>
+    <software codigo="M1" tipo="comercial">
+        <nome>Microsoft Word</nome>
+    </software>
+    <software codigo="P1">
+        <nome>PacketTracer</nome>
+        <dataPubli ano="2016" mes="enero" />
+    </software>
+    <modulo usa="N1 X1">
+        <titulo>Linguaxe de Marcas</titulo>
+    </modulo>
+    <modulo usa="P1">
+        <titulo>Redes</titulo>
+    </modulo>
+    <modulo>
+        <titulo>FOL</titulo>
+    </modulo>
+</informacion>
