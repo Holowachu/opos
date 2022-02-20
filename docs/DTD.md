@@ -231,14 +231,7 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 <sender company="Microsoft" />
 ```
 
-<<<<<<< HEAD
 ## Ejercicios resueltos de examen
-
-```xml title="informacion.xml"
---8<--​ "../data/marcas/dtd/informacion.xml"
-=======
-##Ejercicios resueltos de examen
->>>>>>> 5e57f5b5ca98d867d8b90c0d33b52df26407a30e
 ```
 --8<--​ ".informacion.xml"
 ```
