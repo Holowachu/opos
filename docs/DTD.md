@@ -232,7 +232,7 @@ Pueden acompañar a un elemento o a un conjunto de estos (como en el caso de las
 
 ## Ejercicios resueltos de examen
 ``` xml title="informacion.xml"
---8<-- "../data/marcas/dtd/informacion.xml"
+--8<-- "./data/marcas/dtd/informacion.xml"
 ```
 
 
@@ -245,6 +245,6 @@ Partiendo del documento XML anterior, crea un DTD que lo valide teniendo en cuen
 
 ``` dtd title="informacionG.dtd"
 --8<--
-"marcas/dtd/informacionG.dtd"
+"./data/marcas/dtd/informacionG.dtd"
 --8<--
 ```
