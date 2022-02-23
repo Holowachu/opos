@@ -24,3 +24,12 @@ iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -j ACCEPT
 iptables -A INPUT -p tcp -m multiport --sports 80,443 -j ACCEPT
 ```
 ##Reglas con estados persistentes
+```console title="Persistentes"
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+iptables -A OUTPUT -p udp --dport 53 -d 8.8.8.8 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m state --state NEW -j ACCEPT
+
+iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
+```
