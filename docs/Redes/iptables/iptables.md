@@ -10,12 +10,8 @@ iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 ```
 ##Reglas estáticas
-<<<<<<< Local Changes
-```
-=======
 No guardan el estado de las conexiones
 ```console title="Salida"
->>>>>>> External Changes
 iptables -A OUTPUT -p udp --dport 53 -d 8.8.8.8 -j ACCEPT
 iptables -A OUTPUT -p udp --dport 53 -d 8.8.4.4 -j ACCEPT
 ```
