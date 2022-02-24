@@ -102,7 +102,6 @@ elementFormDefault="qualified">
 
 * **name** - Define el nombre del elemento.
 * **type** - Define el tipo del elemento. Algunos de los tipos más comunes son:
-  
   * xs:string
   * xs:decimal
   * xs:integer
@@ -263,7 +262,7 @@ Permiten intercalar los subelementos con texto.
 
 ## Extensiones
 
-Se usan principalmente para definir elementos con contenido simple, pero que contienen atributos.
+Se usan en general para añadir nuevos elementos o atributos a cualquier tipo definido. Como por ejemplo, para definir elementos con contenido simple, pero que contienen atributos.
 
 ``` xml title="extension.xsd" linenums="1"
 <xs:element name="distancia">
