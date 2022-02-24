@@ -519,3 +519,40 @@ Mediante el elemento redefine podemos redefinir tipos complejos, simples, grupos
   </xs:element>
 </xs:schema>
 ```
+
+## Ejercicios resueltos de examen
+
+### Galicia 2021
+
+Partindo do seguinte documento XML:
+``` xml title="reservas.xml" linenums="1"
+--8<-- "./data/marcas/xsd/reservas.xml"
+```
+Cree os elementos do XML Schema necesarios para realizar as seguintes tarefas:
+
+* Defina o elemento reserva_habitación creando un grupo que se poida reutilizar para definir o
+elemento reserva_salón. Defina tamén o grupo creado.
+
+* Defina un tipo de dato chamado tipoIdCliente para reutilizar cos atributos cliente e id, tendo en conta que sempre seguen o mesmo formato: a letra C, un guión e o DNI (8 díxitos e unha letra maiúscula), por exemplo C_53454123X.
+
+``` xml title="reservas.xsd" linenums="1"
+--8<-- "./data/marcas/xsd/reservas.xsd"
+```
+
+### Galicia 2019
+
+``` xml title="ordenadores.xml" linenums="1"
+--8<-- "./data/marcas/xsd/ordenadores.xml"
+```
+
+Partiendo del documento XML anterior, crea los elementos del XML Schema necesarios para realizar las si- guientes tareas:
+
+1. Definir el elemento sistemaOperativo (el que es hijo de ordenadores). El atributo codigo contiene una cadena de caracteres.
+2. Definir el elemento del XML Schema que permita comprobar que los ordenadores utilicen el software existente en el documento XML.
+3. Definir el elemento sala creando un grupo que se pueda reutilizar para definir el elemento taller.
+4. Definir el elemento numOrdenadores sabiendo que tiene que contener un número mayor que 20 y menor o igual que 40.
+5. Definir el atributo numero del ordenador teniendo en cuenta que siempre sigue el mismo formato: comienza por 200.300. y a continuación tiene un número del 0 al 999.
+
+``` xml title="ordenadores1.xsd" linenums="1"
+--8<-- "./data/marcas/xsd/ordenadores1.xsd"
+```
