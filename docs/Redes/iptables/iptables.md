@@ -37,7 +37,7 @@ iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
 En netfilter, SNAT o Masquerade se realizan en la cadea POSTROUTING y permite especificar:
 - La Dirección IP origen que debe ponerse
 - Iindicar el puerto/s
-```console title="SNAT / Masquerade"
+```console title="SNAT / Masquerade" hl_lines="4"
 # La IP de origen de los paquetes procedentes de los equipos de la red 192.168.1.0/24 será reemprazada por 79.0.0.1
 iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 79.0.0.1
 # La IP de origen de los paquetes procedentes de los equipos de la red 192.168.1.0/24 será reemprazada por la IP pública del router
