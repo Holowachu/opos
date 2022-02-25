@@ -34,3 +34,18 @@ iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m state --state NEW -j A
 iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
 ```
 ##SNAT (Source Network Address Translation)
+En netfilter, SNAT o Masquerade se realizan en la cadea POSTROUTING y permite especificar:
+- La Dirección IP origen que debe ponerse
+- Iindicar el puerto/s
+```console title="SNAT / Masquerade"
+# La IP de origen de los paquetes procedentes de los equipos de la red 192.168.1.0/24 será reemprazada por 79.0.0.1
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 79.0.0.1
+# La IP de origen de los paquetes procedentes de los equipos de la red 192.168.1.0/24 será reemprazada por la IP pública del router
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j MASQUERADE
+# La IP de origen de los paquetes procedentes de equipos de la red 192.168.1.0/24 será reemprazada por 79.0.0.1 y el puerto de origen tcp/udp se cambiara por un de rango 100-1100
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 79.0.0.1:100-1100
+# La IP de origen de los paquetes procedentes de los equipos de la red 192.168.1.0/24 será reemprazada por una IP del rango 79.0.0.1-79.0.0.6
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 79.0.0.1-79.0.0.6
+# La IP de origen de los paquetes procedentes de los equipos de la red 192.168.1.0/24 será reemprazada por  una IP del rango 79.0.0.1-79.0.0.6 y 80.0.0.1
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 79.0.0.1-79.0.0.6 --to-source 80.0.0.1
+```
