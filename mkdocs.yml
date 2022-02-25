@@ -2,8 +2,6 @@ site_name: Opocompis
 theme:
   name: material
   language: es
-  features:
-    - toc.integrate
   palette: 
     - scheme: default
       toggle:
@@ -14,8 +12,8 @@ theme:
         icon: material/weather-night
         name: Switch to light mode
 markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+    - pymdownx.highlight:
+        anchor_linenums: true
