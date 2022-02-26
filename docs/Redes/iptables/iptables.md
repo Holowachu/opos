@@ -55,6 +55,37 @@ iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 79.0.0.1:10
 iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 79.0.0.1-79.0.0.6
 ```
 - La IP de origen de los paquetes procedentes de los equipos de la red 192.168.1.0/24 será reemprazada por una IP del rango 79.0.0.1-79.0.0.6 y 80.0.0.1
-```bash
+```bash 
 iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 79.0.0.1-79.0.0.6 --to-source 80.0.0.1
+```
+- Con SAME se consigue SNAT pero además se usara siempre la misma IP pública con la misma IP privada.
+```bash 
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SAME --to 79.0.0.1-79.0.0.6
+```
+## DNAT (Destination Network Address Translation)
+En netfilter, DNAT se realiza en las cadenas PREROUTING y OUTPUT
+- La IP de destino de los paquetes destinados a 79.0.0.1 será reemprazada por 192.168.1.1
+```bash
+iptables -t nat -A PREROUTING -d 79.0.0.1 -j DNAT --to-destination 192.168.1.1
+```
+- La IP de destino de los paquetes tcp destinados a 79.0.0.1 porto 80 será reemprazada por 192.168.1.1
+```bash
+iptables -t nat -A PREROUTING -d 79.0.0.1 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.1
+```
+- La IP de destino de los paquetes tcp destinados a 79.0.0.1 y a calquiera de los puertos 22, 80 ó 443 será reemprazada por 192.168.1.1
+```bash
+iptables -t nat -A PREROUTING -d 79.0.0.1 -p tcp -m multiport --dports 22,80,443 -j DNAT --to-destination 192.168.1.1
+```
+- Los paquetes tcp destinados a 79.0.0.1 puerto 22000 serán transformados para tener IP de destino 192.168.1.1 y puerto destino tcp/22
+```bash
+iptables -t nat -A PREROUTING -d 79.0.0.1 -p tcp --dport 22000 -j DNAT --to-destination 192.168.1.1:22
+```
+- Los paquetes tcp con origen el equipo 80.0.0.1 y destino 79.0.0.1 puerto 22000 serán transformados para tener IP destino 192.168.1.1 y porto destino tcp/22
+```bash
+iptables -t nat -A PREROUTING -s 80.0.0.1 -d 79.0.0.1 -p tcp --dport 22000 -j DNAT --to-destination 192.168.1.1:22
+```
+## FULL NAT
+IP pública mapeada a IP privada
+```bash
+iptables -t nat -A PREROUTING -s 192.168.1.0/24 -j NETMAP --to 79.0.0.0/24
 ```
