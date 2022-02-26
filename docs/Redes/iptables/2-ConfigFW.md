@@ -67,3 +67,4 @@ iptables -A FORWARD -p tcp -s 192.168.1.2 -d 192.168.56.253 --dport 22  -m state
 #Registros
 
 iptables -A SSH -m limit --limit 5/m --limit-burst 10 -j LOG --log-prefix "iptables: SSH Bloqueo "
+```
