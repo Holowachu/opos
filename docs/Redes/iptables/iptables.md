@@ -35,6 +35,7 @@ iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
 ```
 ##SNAT (Source Network Address Translation)
 En netfilter, **SNAT o Masquerade** se realizan en la cadea **POSTROUTING** y permite especificar:
+
 1. La Dirección IP origen que debe ponerse
 2. Indicar el puerto/s
 
