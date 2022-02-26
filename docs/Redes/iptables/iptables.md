@@ -34,7 +34,7 @@ iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m state --state NEW -j A
 iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
 ```
 ##SNAT (Source Network Address Translation)
-En netfilter, SNAT o Masquerade se realizan en la cadea **POSTROUTING** y permite especificar:
+En netfilter, **SNAT o Masquerade** se realizan en la cadea **POSTROUTING** y permite especificar:
 1. La Dirección IP origen que debe ponerse
 2. Indicar el puerto/s
 
@@ -63,7 +63,7 @@ iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 79.0.0.1-79
 iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SAME --to 79.0.0.1-79.0.0.6
 ```
 ## DNAT (Destination Network Address Translation)
-En netfilter, DNAT se realiza en las cadenas **PREROUTING** y OUTPUT
+En netfilter, **DNAT** se realiza en las cadenas **PREROUTING** y OUTPUT
 - La IP de destino de los paquetes destinados a 79.0.0.1 será reemprazada por 192.168.1.1
 ```bash
 iptables -t nat -A PREROUTING -d 79.0.0.1 -j DNAT --to-destination 192.168.1.1
