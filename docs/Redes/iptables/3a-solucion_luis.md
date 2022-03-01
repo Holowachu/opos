@@ -28,7 +28,8 @@ iptables -t nat -A PREROUTING -p tcp -i eth0 -m multiport -dports 80,443 -j DNAT
 ```
 c) Débese pór un límite de 25 conexións por segundo aos portos 80 e 443 dende Internet.
 ```shell
-iptables -A INPUT -p tcp --syn -m multiport --dports 80,443 -m limit --limit 25/s -j DROP
+#Podría ser: mangle va antes de nat
+iptables -t mangle -A PREROUTING -p tcp -i eth0 -m multiport -dports 80,443 -m limit --limit 25/s -j DROP
 ```
 d) Rexistrarase (facer log) calquera intento de conexión que non estea permitido e débese engadir o texto “ConxProh:” ao rexistro. (Nota: o servidor de logs é o que está instalado por defecto en Debian 10: syslog)
 ```shell
