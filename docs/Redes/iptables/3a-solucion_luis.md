@@ -11,9 +11,9 @@ a) Débese permitir que o administrador se poida conectar dende a súa casa (IP:
 iptables -P OUTPUT DROP
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
-iptables -A OUTPUT --state RELATED,STABLISHED -j ACCEPT
-iptables -A INPUT --state RELATED,STABLISHED -j ACCEPT
-iptables -A FORWARD --state RELATED,STABLISHED -j ACCEPT
+iptables -A OUTPUT --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD --state RELATED,ESTABLISHED -j ACCEPT
 
 # SSH firewall 
 iptables -A INPUT -s 202.10.10.9 -p tcp --dport 22 --state NEW -j ACCEPT

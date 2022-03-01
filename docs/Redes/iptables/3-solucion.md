@@ -9,17 +9,17 @@ a) Débese permitir que o administrador se poida conectar dende a súa casa (IP:
 iptables -P OUTPUT DROP
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
-iptables -A OUTPUT --state RELATED,STABLISHED -j ACCEPT
-iptables -A INPUT --state RELATED,STABLISHED -j ACCEPT
-iptables -A FORWARD --state RELATED,STABLISHED -j ACCEPT
+iptables -A OUTPUT --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT -s 202.10.10.9 -p tcp --dport 22 --state NEW -j ACCEPT
 iptables -t nat -A POSTROUTING -p tcp -dport 22 -s 202.10.10.9 -j SNAT --to-source 192.168.254.200:22
 iptables -A FORWARD -s 202.10.10.9 -d 192.168.254.200 -i eth0 -o eth1 -p tcp --dport 22 --state NEW -j ACCEPT
 ```
 b) Os clientes de Internet poderanse conectar ao servidor WEB.
 ```shell
-iptables -A INPUT --state RELATED,STABLISHED -j ACCEPT
-iptables -A FORWARD --state RELATED,STABLISHED -j ACCEPT
+iptables -A INPUT --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD --state RELATED,ESTABLISHED -j ACCEPT
 iptables -t nat -A PREROUTING -p tcp -i eth0 -m multiport -dports 80,443 -j DNAT --to-destination 192.168.254.200
 iptables -A FORWARD -d 192.168.254.200 -i eth0 -o eth1 -p tcp -m multiport -dports 80,443 --state NEW -j ACCEPT
 ```
