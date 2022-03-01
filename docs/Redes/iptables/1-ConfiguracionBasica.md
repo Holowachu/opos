@@ -2,8 +2,10 @@
 |![Tablas y cadenas predeterminadas más utilizadas en netfilter](netfilter_abreviado_003.png)|
 |:--:|
 |**Imagen 1:** Tablas y cadenas predeterminadas más utilizadas en netfilter|
+|![Tablas](tablas.jpg)|
+|:--:|
+|**Imagen 2:** Tablas Entrada -> Salida|
 
-![Tablas](tablas.jpg)
 ##Configuración básica
 ###Politicas por defecto
 ```bash title="Denegar por defecto (CleanUp Rules)"
