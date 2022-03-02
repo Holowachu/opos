@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="centro.xsl" ?>
+<centro>
+  <ciclo id="ASIR" grao="CS">
+    <módulo id="MP0370">
+      <nome>Planificación e administración de redes</nome>
+      <horas>213</horas>
+    </módulo>
+    <módulo id="MP0371">
+      <nome>Fundamentos hardware</nome>
+      <horas>107</horas>
+    </módulo>
+    <módulo id="MP0373">
+      <nome>Linguaxes de marcas e sistemas de xestión de información</nome>
+      <horas>70</horas>
+    </módulo>
+    <módulo id="MP0375">
+      <nome>Servizos de rede e Internet</nome>
+      <horas>140</horas>
+    </módulo>
+    <alumno id="AL0319">
+      <nome_apelidos>Xoan Cancedo da Foz</nome_apelidos>
+      <datanacemento>06/11/1991</datanacemento>
+      <observacións>Xa fixo outro ciclo</observacións>
+      <cursa id="MP0370" />
+      <cursa id="MP0371" nota="8" />
+    </alumno>
+    <alumno id="AL0324">
+      <nome_apelidos>María Penedo Suárez</nome_apelidos>
+      <datanacemento>26/07/1993</datanacemento>
+      <cursa id="MP0370" nota="9" />
+      <cursa id="MP0374" nota="4" />
+      <cursa id="MP0375" />
+    </alumno>
+  </ciclo>
+  <ciclo id="DAW" grao="CS">
+    <módulo id="MP0373">
+      <nome>Linguaxes de marcas e sistemas de xestión de información</nome>
+      <horas>70</horas>
+    </módulo>
+    <módulo id="MP0484">
+      <nome>Bases de datos</nome>
+      <horas>105</horas>
+    </módulo>
+    <módulo id="MP0485">
+      <nome>Programación</nome>
+      <horas>135</horas>
+    </módulo>
+    <alumno id="AL0497">
+      <nome_apelidos>Mario Fernández Salvado</nome_apelidos>
+      <datanacemento>03/08/1993</datanacemento>
+      <cursa id="MP0373" />
+      <cursa id="MP0484" />
+      <cursa id="MP0485" />
+    </alumno>
+    <alumno id="AL0324">
+      <nome_apelidos>María Penedo Suárez</nome_apelidos>
+      <datanacemento>26/07/1993</datanacemento>
+      <observacións>Traballa polas tardes</observacións>
+      <cursa id="MP0373" nota="7" />
+      <cursa id="MP0484" nota="8" />
+    </alumno>
+  </ciclo>
+</centro>

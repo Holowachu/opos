@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="Rusia.xsl" ?>
+<rusia2018>
+    <equipos>
+        <equipo grupo="B" nombre="ESP">España</equipo>
+        <equipo grupo="A" nombre="ASA">Arabia Saudí</equipo>
+        <equipo grupo="B" nombre="POR">Portugal</equipo>
+        <equipo grupo="A" nombre="RUS">Rusia</equipo>
+    </equipos>
+    <partidos jornada="1">
+        <partido equi1="RUS" equi2="ASA">
+            <gol nombre="Golovin" equipo="RUS">94</gol>
+            <amarilla nombre="Al-Jassim" equipo="ASA">93</amarilla>
+            <gol nombre="Cheryshev" equipo="RUS">91</gol>
+            <gol nombre="Dzyuba" equipo="RUS">71</gol>
+            <gol nombre="Cheryshev" equipo="RUS">43</gol>
+            <gol nombre="Gazinsky" equipo="RUS">12</gol>
+        </partido>
+        <partido equi1="POR" equi2="ESP">
+            <gol nombre="Ronaldo" equipo="POR">4</gol>
+            <amarilla nombre="Busquets" equipo="ESP">17</amarilla>
+            <gol nombre="Costa" equipo="ESP">24</gol>
+            <amarilla nombre="Fernandes" equipo="POR">28</amarilla>
+            <gol nombre="Ronaldo" equipo="POR">44</gol>
+            <gol nombre="Costa" equipo="ESP">55</gol>
+            <gol nombre="Nacho" equipo="ESP">58</gol>
+            <gol nombre="Ronaldo" equipo="POR">88</gol>
+        </partido>
+    </partidos>
+</rusia2018>

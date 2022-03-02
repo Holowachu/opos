@@ -9,6 +9,10 @@
              text-align: center;
              background-color: #ddd;
          }
+         table, tr, td, th {
+             border: solid;
+             border-collapse: collapse;
+         }
      </style>
 
  </head>
@@ -19,7 +23,7 @@
        <tr><th>Fecha entrada</th><th>Cliente</th><th>Observaciones</th></tr>
       </thead>
       <tbody>
-          <xsl:for-each select="//reserva_salón | //reserva_habitación">
+          <xsl:for-each select="//reserva_salón">
             <xsl:sort select="fechaEntrada/@mes"/>
                 <tr>
                     <td><xsl:value-of select="fechaEntrada/@día"/>-<xsl:value-of select="fechaEntrada/@mes"/>-<xsl:value-of select="fechaEntrada/@año"/></td>
