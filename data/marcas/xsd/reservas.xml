@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/reservas.xsl" ?>
 <reservas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="reservas.xsd">
     <reserva_habitación cliente="C_53454123X" opciones="AD" tipoHabitación="Doble">
         <fechaEntrada año="2021" mes="Junio" día="18"></fechaEntrada>
