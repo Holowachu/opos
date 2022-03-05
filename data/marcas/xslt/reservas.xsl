@@ -5,14 +5,14 @@
  <head>
      <title>Tabla reservas</title>
      <style>
-         th {
-             text-align: center;
-             background-color: #ddd;
-         }
-         table, tr, td, th {
-             border: solid;
-             border-collapse: collapse;
-         }
+        th {
+            text-align: center;
+            background-color: #ddd;
+        }
+        table, tr, td, th {
+            border: solid;
+            border-collapse: collapse;
+        }
      </style>
 
  </head>
