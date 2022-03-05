@@ -47,6 +47,7 @@ Una expresión XPath simple consta de 3 pasos de localización:
 ``` xslt
 eje::test-nodo[predicado]
 ```
+
 ### Ejes
 
 * self. El propio nodo contexto.
@@ -71,7 +72,7 @@ Si no se indica un eje explícitamente, este toma el valor de "child".
 /child::venta/child::cliente/attribute::cod
 ```
 
-#### Ejemplos jodidillos:
+#### Ejemplos de utilidad de los ejes:
 ```xml
 <document id="1">
   <content>
@@ -125,9 +126,183 @@ Si no se indica un eje explícitamente, este toma el valor de "child".
 ### Tests de nodo
 
 Los test de nodo pueden ser:
+
 * nombre_de_un_nodo --> Selecciona todos los nodos con el nombre indicado. 
 * \* --> Selecciona todos los elementos y atributos.
 * node() --> Selecciona todos los nodos (de cualquier tipo).
 * text() --> Selecciona los nodos de texto.
 * comment() --> Selecciona los nodos de comentario.
 * processing-instructions() --> Selecciona los nodos de procesamiento de instrucciones.
+
+
+```xslt
+<!-- Expresiones equivalentes para obtener todos los atributos del documento -->
+/descendant-or-self::node()/@*
+//@*
+```
+
+Debido a su frecuente uso, existen abreviaturas para algunas rutas de localización:
+
+* "//" equivale a "descendant-or-self::node()"
+```xslt
+<!-- Selecciona los elementos "autor" descendientes de biblioteca hijo del raíz -->
+/biblioteca//autor
+```
+
+* ".." equivale la "parent::node()"
+```xslt
+<!-- Selecciona los elementos con un atributo "fechaNacimiento" -->
+//@fechaNacimiento/..
+```
+
+* "." equivale la "self::node()"
+
+Además existe la posibilidad de combinar los conjuntos de nodos devueltos por varias expresiones complejas haciendo uso de **|**
+```xslt
+<!-- Selecciona los elementos "autor" y "titulo" del documento -->
+//autor|//titulo
+```
+
+### Predicados
+
+El predicado es opcional, y se escribe entre corchetes, a continuación del test de nodo. Si el eje y el test de nodo han seleccionado unos nodos, el predicado permite restringir esa selección a los que cumplan determinadas condiciones.
+
+* [@atributo] --> Selecciona los elementos que tienen el atributo.
+```xslt
+<!-- Selecciona los elementos "autor" con un atributo "fechaNacimiento" -->
+//autor[@fechaNacimiento]
+```
+
+* [número] --> Si hay varios resultados selecciona uno de ellos por número de orden; el primero es el número 1 y **last()** selecciona el último de ellos.
+```xslt
+<!-- Selecciona el primer libro del documento -->
+//libro[1]
+
+<!-- Selecciona el último libro del documento -->
+//libro[last()]
+
+<!-- Selecciona el penúltimo libro del documento -->
+//libro[last()-1]
+```
+
+* [condicion] --> Selecciona los nodos que cumplen la condición.
+En las condiciones se pueden utilizar los operadores siguientes:
+
+    * operadores lógicos: and, or, not()
+    * operadores aritméticos: +, -, *, div, mod
+    * operadores de comparación: =, !=, <, >, <=, >=
+```xslt
+<!-- Selecciona los elementos "fechaPublicacion" cuyo atributo "año"
+ tenga un valor mayor a 1970 -->
+//fechaPublicacion[@año>1970]
+
+<!-- Selecciona los elementos "libro" cuyo elemento hijo "autor" 
+tenga por valor mayor "Mario Vargas Llosa" -->
+//libro[autor="Mario Vargas Llosa"]
+
+<!-- Selecciona los atributos "año" cuyo valor sea superior a 1970 -->
+//@año[.>1970]
+
+<!-- Selecciona los atributos "libro" de "Mario Vargas Llosa"
+con año de publicación 1973 -->
+//libro[autor="Mario Vargas Llosa" and fechaPublicacion/@año="1973"]
+```
+
+## Funciones
+
+* **not()** --> Devuelve verdadero si el valor del operando es falso, verdadero en caso contrario.
+```xslt
+<!-- Selecciona los elementos "autor" sin atributo "fechaDefuncion" -->
+//autor[not(@fechaDefuncion)]
+```
+
+* **ceiling()** --> Devuelve el primero entero mayor que el valor del parámetro.
+```xslt
+<!-- Devuelve 2 -->
+ceiling(3 div 2)
+```
+
+* **floor()** --> Devuelve el primero entero menor que el valor del parámetro.
+```xslt
+<!-- Devuelve 1 -->
+floor(3 div 2)
+```
+
+* **round()** --> Devuelve el entero más próximo al valor del parámetro.
+```xslt
+<!-- Devuelve 2 -->
+round(3 div 2)
+```
+
+* **sum()** --> Devuelve la suma de los valores de los nodos que se pasan como parámetros.
+```xslt
+<!-- Devuelve la suma del importe de todos los productos del XML -->
+sum(//producto/@importe)
+```
+
+* **concat()** --> Concatena en una cadena todas las que se le pasan como parámetros.
+```xslt
+concat("Don ", //autor/text())
+```
+
+* **contains()** --> Devuelve verdadero si la primera cadena contiene a la segunda, falso en caso contrario.
+```xslt
+contains(//nombre/ text(),"Uxío")
+```
+
+* **starts-with()** --> Devuelve verdadero si la primera cadena comienza con la segunda, falso en caso contrario.
+```xslt
+starts-with(//nombre/ text(),"V")
+```
+
+* **string-length()** --> Devuelve el número de carácteres de la cadena.
+```xslt
+string-length(//nombre/ text())
+```
+
+* **substring()** --> De la cadena que recibe como primero parámetro, devuelve tantos carácteres como indique el tercero parámetro, contando a partir de la posición que indique el segundo parámetro.
+```xslt
+<!-- Devuelve los 2 primeros caracteres del nombre -->
+//nome/substring(text(), 1, 2)
+```
+
+* **translate()** --> Devuelve la cadena del primer parámetro, sustituyendo todas las ocurrencias de los carácteres del segundo parámetro por los carácteres del tercero parámetro.
+```xslt
+//dirección/translate(.,",","-")
+```
+
+* **count()** --> Devuelve el número de nodos del conjunto de nodos.
+```xslt
+count(//producto)
+```
+
+* **name()** --> Devuelve el nombre calificado del primer nodo en el conjunto de nodos que se le pasa como parámetro.
+```xslt
+//nombre/name()
+```
+
+* **position()** --> Devuelve la posición (comenzando con 1) del nodo contexto en el conjunto de nodos del contexto actual.
+```xslt
+<!-- Selecciona los 3 primeros autores -->
+//autor[position() <= 3]
+```
+
+## Ejercicios de exámen resueltos
+
+### Galicia 2021
+
+Partindo do seguinte documento XML:
+``` xml title="reservas.xml" linenums="1"
+--8<-- "./data/marcas/xsd/reservas.xml"
+```
+Empregue expresións XPath para obter os seguintes datos:
+
+* O nome dos clientes que reservaron algunha habitación para entrar en Agosto.
+```xslt
+//cliente[@id=//reserva_habitación[fechaEntrada/@mes="Agosto"]/@cliente]/nombre/text()
+```
+
+* O identificador (id) dos clientes que teñan un nome que empece por F.
+```xslt
+//cliente[starts-with(nombre,"F")]/@id
+```
