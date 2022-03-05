@@ -257,17 +257,30 @@ starts-with(//nombre/ text(),"V")
 
 * **string-length()** --> Devuelve el número de carácteres de la cadena.
 ```xslt
-string-length(//nombre/ text())
+<!-- En Xpath 1.0 -->
+string-length(//nombre/text())
+
+<!-- En Xpath 3.1 -->
+//nombre/string-length(text())
 ```
 
 * **substring()** --> De la cadena que recibe como primero parámetro, devuelve tantos carácteres como indique el tercero parámetro, contando a partir de la posición que indique el segundo parámetro.
 ```xslt
 <!-- Devuelve los 2 primeros caracteres del nombre -->
+
+<!-- En Xpath 1.0 -->
+substring(//nome/text(), 1, 2)
+
+<!-- En Xpath 3.1 -->
 //nome/substring(text(), 1, 2)
 ```
 
 * **translate()** --> Devuelve la cadena del primer parámetro, sustituyendo todas las ocurrencias de los carácteres del segundo parámetro por los carácteres del tercero parámetro.
 ```xslt
+<!-- En Xpath 1.0 -->
+translate(//dirección/text(),",","-")
+
+<!-- En Xpath 3.1 -->
 //dirección/translate(.,",","-")
 ```
 
@@ -278,6 +291,10 @@ count(//producto)
 
 * **name()** --> Devuelve el nombre calificado del primer nodo en el conjunto de nodos que se le pasa como parámetro.
 ```xslt
+<!-- En Xpath 1.0 solo se aplica al primer nodo del set -->
+name(//nombre)
+
+<!-- En Xpath 3.1 se puede aplicar a todos los nodos del set -->
 //nombre/name()
 ```
 
