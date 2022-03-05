@@ -32,4 +32,4 @@ Un documento XML puede representarse como un árbol dirigido, considerando por e
   </libro>
 </biblioteca>
 ```
-![Árbol XML](./data/marcas/xpath/grafos-documento.svg)
+![Árbol XML](./../../data/marcas/xpath/grafos-documento.svg)
