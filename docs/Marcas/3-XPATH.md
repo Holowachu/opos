@@ -50,19 +50,19 @@ eje::test-nodo[predicado]
 
 ### Ejes
 
-* self. El propio nodo contexto.
-* child. Los hijos del nodo contexto.
-* parent. El padre del nodo contexto.
-* ancestor. Los antepasados del nodo contexto.
-* ancestor-or-self. El nodo contexto y sus antepasados.
-* descendant. Los descendientes del nodo contexto.
-* descendant-or-self. El nodo contexto y sus descendientes.
-* following. Los nodos siguientes al nodo contexto, sin descendientes.
-* following-sibling. Los nodos del mismo nivel que siguen al nodo contexto.
-* preceding. Los nodos anteriores al nodo contexto, sin antepasados.
-* preceding-sibling. Los nodos del mismo nivel que preceden al nodo contexto.
-* attribute. Los nodos atributo del nodo contexto.
-* namespace. Los nodos de espacio de nombres del nodo contexto.
+* **self** --> El propio nodo contexto.
+* **child** --> Los hijos del nodo contexto.
+* **parent** --> El padre del nodo contexto.
+* **ancestor** --> Los antepasados del nodo contexto.
+* **ancestor-or-self** --> El nodo contexto y sus antepasados.
+* **descendant** --> Los descendientes del nodo contexto.
+* **descendant-or-self** --> El nodo contexto y sus descendientes.
+* **following** --> Los nodos siguientes al nodo contexto, sin descendientes.
+* **following-sibling** --> Los nodos del mismo nivel que siguen al nodo contexto.
+* **preceding** --> Los nodos anteriores al nodo contexto, sin antepasados.
+* **preceding-sibling** --> Los nodos del mismo nivel que preceden al nodo contexto.
+* **attribute** --> Los nodos atributo del nodo contexto.
+* **namespace** --> Los nodos de espacio de nombres del nodo contexto.
 
 Si no se indica un eje explícitamente, este toma el valor de "child".
 
