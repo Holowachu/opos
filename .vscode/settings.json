@@ -1,0 +1,30 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "130.61.201.198",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "Fer_Server",
+            "database": "Prueba",
+            "username": "opo",
+            "password": "opocompis"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "138.3.245.35",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "Vic_AMD_1",
+            "database": "articulos",
+            "username": "root",
+            "password": "passwd"
+        }
+    ]
+}

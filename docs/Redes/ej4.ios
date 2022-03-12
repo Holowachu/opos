@@ -1,0 +1,68 @@
+! Opción A - Con PACLs
+
+ip access-list extended bloqueo_hacia_60_80
+    remark Bloqueamos acceso desde la VLAN 40 hacia la 60 y la 80
+    deny ip 160.0.174.0 0.0.0.255 160.0.175.0 0.0.0.127
+    permit ip any any
+    exit
+
+ip access-list extended bloqueo_hacia_40
+    remark Bloqueamos acceso hacia la VLAN 40
+    deny ip any 160.0.174.0 0.0.0.255
+    permit ip any any
+    exit
+
+interface Fa0/4
+    description Puerto conectado a VLAN 40
+    ip access-group bloqueo_hacia_60_80 in
+    exit
+
+interface Fa0/5
+    description Puerto conectado a VLAN 60
+    ip access-group bloqueo_hacia_40 in
+    exit
+
+interface Fa0/6
+    description Puerto conectado a VLAN 80
+    ip access-group bloqueo_hacia_40 in
+    exit
+
+
+! Opción B - Con VACLs
+
+ip access-list extended 40a60o80
+    permit ip 160.0.174.0 0.0.0.255 160.0.175.0 0.0.0.127
+    exit
+
+ip access-list extended resto
+    permit ip any any
+    exit
+
+! El 10 y el 20 es por el orden en el que matchean como en las ACLs normales
+vlan access-map VACL_40 10
+    match ip address 40a60o80
+    action drop
+    exit
+vlan access-map VACL_40 20
+    match ip address resto
+    action forward
+    exit
+
+! Aplicamos el access-map a la VLAN 40
+vlan filter VACL_40 vlan-list 40
+
+ip access-list extended hacia40
+    permit ip any 160.0.174.0 0.0.0.255
+    exit
+
+vlan access-map VACL_60_80 10
+    match ip address hacia40
+    action drop
+    exit
+vlan access-map VACL_60_80 20
+    match ip address resto
+    action forward
+    exit
+
+! Aplicamos el access-map a las VLANes 60 y 80
+vlan filter VACL_60_80 vlan-list 60,80
