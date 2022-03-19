@@ -54,6 +54,38 @@ XSLT se emplea como una hoja de estilos aplicada a un documento XML. Esta hoja d
 </xsl:template>
 ```
 
+## Formato del documento de salida: **<xsl:output\>**
+
+La instrucción **<xsl:output\>** define el formato del documento de salida. Aunque ofrece multitud de atributos para su configuración, nos centraremos en 2:
+* *indent* --> Puede tomar los valores "yes" o "no" e indica si la salida estará indentada conforme a su jerarquía.
+* *method* --> Define el formato de salida. Puede tomar los siguiente valores: *xml*|*html*|*text*|*name*. Aunque lo habitual será XML o HTML.
+
+```xml title="ejemplo.xsl"
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output indent="yes" method="html"/>
+<xsl:template match="/">
+  <html>
+    <body>
+      <h2>My CD Collection</h2>
+      <table border="1">
+        <tr bgcolor="#9acd32">
+          <th>Title</th>
+          <th>Artist</th>
+        </tr>
+        <xsl:for-each select="catalog/cd">
+          <xsl:sort select="artist"/>
+          <tr>
+            <td><xsl:value-of select="title"/></td>
+            <td><xsl:value-of select="artist"/></td>
+          </tr>
+        </xsl:for-each>
+      </table>
+    </body>
+  </html>
+</xsl:template>
+```
+
 ## La instrucción **<xsl:value-of\>**
 
 Extrae el contenido del nodo seleccionado mediante la expresión XPath utilizada en el atributo select.
@@ -81,7 +113,7 @@ Extrae el contenido del nodo seleccionado mediante la expresión XPath utilizada
 ```
 ``` xml title="biblioteca.xsl"
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:template match="fechaPublicacion">
      <xsl:value-of select="@año"/>
@@ -137,7 +169,7 @@ La instrucción **<xsl:apply-templates\>** hace que se apliquen a los subelement
 
 ``` xml title="biblioteca.xsl"
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:template match="/">
     <html>
@@ -163,3 +195,227 @@ La instrucción **<xsl:apply-templates\>** hace que se apliquen a los subelement
 La primera regla sustituye el elemento raíz (y todos sus subelementos) por las etiquetas <html\> y <h1\>, pero además aplica a los subelementos las reglas que les son aplicables. En este caso, sólo hay una regla para los elementos <libro\> que generan los párrafos.
 
 
+## Generación de elementos: **<xsl:element\>**
+
+Dentro de un patrón podemos emplear **<xsl:element\>** para crear un nuevo elemento en el documento de salida. Es obligatorio indicar el nombre del nuevo elemento mediante el atributo *name*.
+
+``` xml title="element.xsl"
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/ciclo">
+    <xsl:element name="{concat(name(), '_asir')}" />
+  </xsl:template>
+</xsl:stylesheet>
+```
+*Este ejemplo reemplazaría el elemento ciclo por uno con el nombre "ciclo_asir".
+
+
+## Generación de atributos: **<xsl:attribute\>**
+
+Cuando creamos un nuevo elemento en el documento de salida empleando **<xsl:element\>**, también podemos especificar sus atributos. Simplemente tendremos que añadir como hijos de este tantos elementos **<xsl:attribute\>** como necesitemos, indicando en cada uno de ellos su nombre con el atributo "name". Su valor será el texto que contenga.
+
+``` xml title="attribute.xsl"
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/módulo/profesor">
+    <xsl:element name="{name()}">
+      <xsl:attribute name="nombre">
+        <xsl:value-of select="text()" />
+      </xsl:attribute>
+    </xsl:element>
+  </xsl:template>
+</xsl:stylesheet>
+```
+
+## Bucles
+### Recorrido de nodos: **<xsl:for-each\>**
+
+El elemento **<xsl:for-each\>** permite procesar todos los elementos XML de un conjunto de nodos específico.
+
+```xml title="biblioteca.xml"
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="biblioteca.xsl"?>
+<biblioteca>
+  <libro>
+    <titulo>La vida está en otra parte</titulo>
+    <autor>Milan Kundera</autor>
+    <fechaPublicacion año="1973"/>
+  </libro>
+  <libro>
+    <titulo>Pantaleón y las visitadoras</titulo>
+    <autor fechaNacimiento="28/03/1936">Mario Vargas Llosa</autor>
+    <fechaPublicacion año="1973"/>
+  </libro>
+  <libro>
+    <titulo>Conversación en la catedral</titulo>
+    <autor fechaNacimiento="28/03/1936">Mario Vargas Llosa</autor>
+    <fechaPublicacion año="1969"/>
+  </libro>
+</biblioteca>
+```
+
+``` xml title="for-each.xsl"
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output indent="yes" method="html"/>
+
+<xsl:template match="/">
+  <html>
+    <body>
+      <h2>Tabla de libros</h2>
+      <table border="1">
+        <tr bgcolor="#9acd32">
+          <th>Título</th>
+          <th>Autor</th>
+        </tr>
+        <xsl:for-each select="biblioteca/libro">
+          <tr>
+            <td><xsl:value-of select="titulo"/></td>
+            <td><xsl:value-of select="autor"/></td>
+          </tr>
+        </xsl:for-each>
+      </table>
+    </body>
+  </html>
+</xsl:template>
+
+</xsl:stylesheet>
+```
+
+### Ordenación: **<xsl:sort\>**
+
+El elemento **<xsl:sort\>** permite ordenar la salida generada por un **<xsl:for-each\>** en base a algún campo de los elementos procesados. Los atributos que permiten su configuración son:
+* *order* --> Indica si se desea ordenación ascendente ("ascending") o descendente ("descending").
+* *data-type* --> Indica si se desea una ordenación alfabética ("text") o numérica ("number").
+* *select* --> Indica el campo en base al cuál se ordenará.
+
+``` xml title="sort.xsl"
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output indent="yes" method="html"/>
+
+<xsl:template match="/">
+  <html>
+    <body>
+      <h2>Tabla de libros</h2>
+      <table border="1">
+        <tr bgcolor="#9acd32">
+          <th>Título</th>
+          <th>Autor</th>
+        </tr>
+        <xsl:for-each select="biblioteca/libro">
+          <xsl:sort order="ascending" data-type="number" select="fechaPublicacion/@año"/>
+          <tr>
+            <td><xsl:value-of select="titulo"/></td>
+            <td><xsl:value-of select="autor"/></td>
+          </tr>
+        </xsl:for-each>
+      </table>
+    </body>
+  </html>
+</xsl:template>
+
+</xsl:stylesheet>
+```
+
+## Condiciones
+
+### **<xsl:if\>**
+El elemento **<xsl:if\>** nos permite crear condiciones. El elemento consta de un atributo obligatorio test, cuyo valor contiene la expresión que se evaluará en el documento de origen. A diferencia de otros lenguajes de programación, en XSLT no se da ninguna conexión entre IF y ELSE.
+
+```xml title="biblioteca.xml"
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="biblioteca.xsl"?>
+<biblioteca>
+  <libro idioma="es">
+    <titulo>La vida está en otra parte</titulo>
+    <autor>Milan Kundera</autor>
+    <fechaPublicacion año="1973"/>
+  </libro>
+  <libro idioma="en">
+    <titulo>The Tragedy of Hamlet, Prince of Denmark</titulo>
+    <autor fechaNacimiento="23/04/1564">William Shakespeare</autor>
+    <fechaPublicacion año="1601"/>
+  </libro>
+  <libro idioma="es">
+    <titulo>Conversación en la catedral</titulo>
+    <autor fechaNacimiento="28/03/1936">Mario Vargas Llosa</autor>
+    <fechaPublicacion año="1969"/>
+  </libro>
+</biblioteca>
+```
+
+``` xml title="if.xsl"
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output indent="yes" method="html"/>
+
+<xsl:template match="/">
+  <html>
+    <body>
+      <h2>Tabla de libros</h2>
+      <table border="1">
+        <tr bgcolor="#9acd32">
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Idioma</th>
+        </tr>
+        <xsl:for-each select="biblioteca/libro">
+          <xsl:sort order="ascending" data-type="number" select="fechaPublicacion/@año"/>
+          <tr>
+            <td><xsl:value-of select="titulo"/></td>
+            <td><xsl:value-of select="autor"/></td>
+            <xsl:if test="@idioma='es'"><td>Español</td></xsl:if>
+            <xsl:if test="@idioma='en'"><td>Inglés</td></xsl:if>
+            <xsl:if test="@idioma='de'"><td>Alemán</td></xsl:if>
+          </tr>
+        </xsl:for-each>
+      </table>
+    </body>
+  </html>
+</xsl:template>
+
+</xsl:stylesheet>
+```
+
+### **<xsl:choose\>**
+
+El elemento **<xsl:choose\>** con sus elementos secundarios **<xsl:when\>** y **<xsl:otherwise\>** se corresponde con la estructura condicional switch/case en otros lenguajes de programación.
+
+Esta estructura permite establecer varias condiciones. Además, se puede fijar un valor, que se asignará en caso de ninguna de éstas se cumpla. La estructura debe comenzar con el elemento **<xsl:choose\>**. El elemento puede contener tantos elementos secundarios **<xsl:when\>** como se desee y un único elemento **<xsl:otherwise\>**.
+
+``` xml title="choose.xsl"
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output indent="yes" method="html"/>
+
+<xsl:template match="/">
+  <html>
+    <body>
+      <h2>Tabla de libros</h2>
+      <table border="1">
+        <tr bgcolor="#9acd32">
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Idioma</th>
+        </tr>
+        <xsl:for-each select="biblioteca/libro">
+          <xsl:sort order="ascending" data-type="number" select="fechaPublicacion/@año"/>
+          <tr>
+            <td><xsl:value-of select="titulo"/></td>
+            <td><xsl:value-of select="autor"/></td>
+            <xsl:choose>
+                  <xsl:when test="@idioma='es'"><td>Español</td></xsl:when>
+                  <xsl:when test="@idioma='en'"><td>Inglés</td></xsl:when>
+                  <xsl:when test="@idioma='de'"><td>Alemán</td></xsl:when>
+                  <xsl:otherwise>Otro</xsl:otherwise>
+             </xsl:choose>
+          </tr>
+        </xsl:for-each>
+      </table>
+    </body>
+  </html>
+</xsl:template>
+
+</xsl:stylesheet>
+```
