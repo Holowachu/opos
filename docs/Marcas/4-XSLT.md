@@ -455,6 +455,6 @@ Dado el documento XML Rusia2018.xml con algunos de los equipos y partidos de fut
 
 Solución:
 
-``` xml title="reservas.xsl" linenums="1"
+``` xml title="Rusia.xsl" linenums="1"
 --8<-- "./data/marcas/xslt/Rusia.xsl"
 ```
