@@ -1,7 +1,7 @@
 # XSLT
 XSLT (Transformaciones XSL) es un lenguaje de programación declarativo que permite generar documentos a partir de documentos XML, como ilustra la imagen siguiente:
 
-![Transformación XSLT](.data/marcas/xslt/data/marcas/xslt/xslt-resumen.png)
+![Transformación XSLT](xslt-resumen.png)
 
 XSLT se emplea como una hoja de estilos aplicada a un documento XML. Esta hoja define una colección de plantillas (template rules). Cada plantilla establece cómo se transforma un determinado elemento (definido mediante expresiones XPath). La transformación del documento se realiza de la siguiente manera:
 
@@ -54,7 +54,7 @@ XSLT se emplea como una hoja de estilos aplicada a un documento XML. Esta hoja d
 </xsl:template>
 ```
 
-## La instrucción **<xsl:value-of>**
+## La instrucción **\<xsl:value-of\>**
 
 Extrae el contenido del nodo seleccionado mediante la expresión XPath utilizada en el atributo select.
 
@@ -109,9 +109,9 @@ Extrae el contenido del nodo seleccionado mediante la expresión XPath utilizada
 *Además de los valores seleccionados del atributo año, el resultado incluye el contenido de los elementos título y autor (y el salto de línea del raíz), pues no hay template definido para ellos, pero sí son procesados (son hermanos de fechaPublicacion).
 
 
-## Aplicar reglas a subnodos: la instrucción **<xsl:apply-templates>**
+## Aplicar reglas a subnodos: la instrucción **\<xsl:apply-templates\>**
 
-La instrucción **<xsl:apply-templates>** hace que se apliquen a los subelementos las reglas que les sean aplicables.
+La instrucción **\<xsl:apply-templates\>** hace que se apliquen a los subelementos las reglas que les sean aplicables.
 
 ```xml title="biblioteca.xml"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -160,6 +160,6 @@ La instrucción **<xsl:apply-templates>** hace que se apliquen a los subelemento
   <p>Mario Vargas Llosa</p>
 </html>
 ```
-La primera regla sustituye el elemento raíz (y todos sus subelementos) por las etiquetas <html> y <h1>, pero además aplica a los subelementos las reglas que les son aplicables. En este caso, sólo hay una regla para los elementos <libro> que generan los párrafos.
+La primera regla sustituye el elemento raíz (y todos sus subelementos) por las etiquetas \<html\> y \<h1\>, pero además aplica a los subelementos las reglas que les son aplicables. En este caso, sólo hay una regla para los elementos \<libro\> que generan los párrafos.
 
 
