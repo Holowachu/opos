@@ -8,8 +8,8 @@ XSLT se emplea como una hoja de estilos aplicada a un documento XML. Esta hoja d
 * El procesador analiza el documento y construye el árbol del documento.
 * El procesador recorre el árbol del documento desde el nodo raíz.
 * En cada nodo recorrido, el procesador aplica o no alguna plantilla:
-  * Si a un nodo no se le puede aplicar ninguna plantilla, su contenido se incluye en el documento final (el texto del nodo, no el de los nodos descendientes). A continuación, el procesador recorre sus nodos hijos.
-  * Si a un nodo se le puede aplicar una plantilla, se aplica la plantilla. La plantilla puede generar texto que se incluye en el documento final. En principio, el procesador no recorre sus nodos hijos, salvo que la plantilla indique al procesador que sí que deben recorrerse los nodos hijos.
+	* Si a un nodo no se le puede aplicar ninguna plantilla, su contenido se incluye en el documento final (el texto del nodo, no el de los nodos descendientes). A continuación, el procesador recorre sus nodos hijos.
+	* Si a un nodo se le puede aplicar una plantilla, se aplica la plantilla. La plantilla puede generar texto que se incluye en el documento final. En principio, el procesador no recorre sus nodos hijos, salvo que la plantilla indique al procesador que sí que deben recorrerse los nodos hijos.
 * Cuando el procesador ha recorrido el árbol, se ha terminado la transformación.
 
 ## Enlazar XML con hoja de estilos XSLT
