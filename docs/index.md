@@ -20,3 +20,4 @@ DELIMITER ;
 
 select sizeCiudad(665);
 ```
+![Screenshot](../data/Captura.png)
