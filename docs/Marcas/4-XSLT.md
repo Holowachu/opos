@@ -57,6 +57,7 @@ XSLT se emplea como una hoja de estilos aplicada a un documento XML. Esta hoja d
 ## Formato del documento de salida: **<xsl:output\>**
 
 La instrucción **<xsl:output\>** define el formato del documento de salida. Aunque ofrece multitud de atributos para su configuración, nos centraremos en 2:
+
 * *indent* --> Puede tomar los valores "yes" o "no" e indica si la salida estará indentada conforme a su jerarquía.
 * *method* --> Define el formato de salida. Puede tomar los siguiente valores: *xml*|*html*|*text*|*name*. Aunque lo habitual será XML o HTML.
 
@@ -285,6 +286,7 @@ El elemento **<xsl:for-each\>** permite procesar todos los elementos XML de un c
 ### Ordenación: **<xsl:sort\>**
 
 El elemento **<xsl:sort\>** permite ordenar la salida generada por un **<xsl:for-each\>** en base a algún campo de los elementos procesados. Los atributos que permiten su configuración son:
+
 * *order* --> Indica si se desea ordenación ascendente ("ascending") o descendente ("descending").
 * *data-type* --> Indica si se desea una ordenación alfabética ("text") o numérica ("number").
 * *select* --> Indica el campo en base al cuál se ordenará.
