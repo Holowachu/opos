@@ -79,7 +79,7 @@ Extrae el contenido del nodo seleccionado mediante la expresión XPath utilizada
   </libro>
 </biblioteca>
 ```
-``` xml title="biblioteca.xsl
+``` xml title="biblioteca.xsl"
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
@@ -135,7 +135,7 @@ La instrucción **<xsl:apply-templates>** hace que se apliquen a los subelemento
 </biblioteca>
 ```
 
-``` xml title="biblioteca.xsl
+``` xml title="biblioteca.xsl"
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
