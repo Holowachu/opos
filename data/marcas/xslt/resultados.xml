@@ -1,0 +1,12 @@
+<resultados>
+    <jornada numero="1">
+       <partido>
+          <selecciones>RUS-ASA</selecciones>
+          <resultado>5-0</resultado>
+       </partido>
+       <partido>
+          <selecciones>POR-ESP</selecciones>
+          <resultado>3-3</resultado>
+       </partido>
+    </jornada>
+ </resultados>

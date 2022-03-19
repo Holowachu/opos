@@ -421,3 +421,40 @@ Esta estructura permite establecer varias condiciones. Además, se puede fijar u
 
 </xsl:stylesheet>
 ```
+
+## Ejercicios de exámen resueltos
+
+### Galicia 2021
+
+Tomando como base o seguinte documento XML:
+
+``` xml title="reservas.xml" linenums="1"
+--8<-- "./data/marcas/xsd/reservas.xml"
+```
+
+* Xere como saída das transformacións XSLT un documento HTML que conteña unha táboa como a seguinte. Observe que as reservas están ordenadas por mes. O texto das cabeceiras debe estar centrado. O color de fondo das celas sombreadas é #ddd
+
+![Tabla de salida](tabla_xslt_gal_21.png)
+
+
+``` xml title="reservas.xsl" linenums="1"
+--8<-- "./data/marcas/xslt/reservas.xsl"
+```
+
+### Cantabria 2018
+
+Dado el documento XML Rusia2018.xml con algunos de los equipos y partidos de futbol jugados, se solicita la escritura del documento Rusia.xsl que realice la transformación del mismo en otro XML, resultados.xml, donde se puedan ver los resultados de los partidos tal como se muestra en la imagen. Explicar qué procesos son necesarios para realizar dicha transformación. Se debe utilizar la version 1.0 y el espacio de nombres xsl de http://www.w3.org/1999/XSL/Transform y codificación UTF-8.
+
+``` xml title="Rusia2018.xml" linenums="1"
+--8<-- "./data/marcas/xslt/Rusia2018.xml"
+```
+
+``` xml title="resultados.xml" linenums="1"
+--8<-- "./data/marcas/xslt/resultados.xml"
+```
+
+Solución:
+
+``` xml title="reservas.xsl" linenums="1"
+--8<-- "./data/marcas/xslt/Rusia.xsl"
+```
