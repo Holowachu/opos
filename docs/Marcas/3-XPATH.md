@@ -188,9 +188,9 @@ El predicado es opcional, y se escribe entre corchetes, a continuación del test
 * [condicion] --> Selecciona los nodos que cumplen la condición.
 En las condiciones se pueden utilizar los operadores siguientes:
 
-    * operadores lógicos: and, or, not()
-    * operadores aritméticos: +, -, *, div, mod
-    * operadores de comparación: =, !=, <, >, <=, >=
+	* operadores lógicos: and, or, not()
+	* operadores aritméticos: +, -, *, div, mod
+	* operadores de comparación: =, !=, <, >, <=, >=
 ```xslt
 <!-- Selecciona los elementos "fechaPublicacion" cuyo atributo "año"
  tenga un valor mayor a 1970 -->

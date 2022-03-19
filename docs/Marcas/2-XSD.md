@@ -102,12 +102,12 @@ elementFormDefault="qualified">
 
 * **name** - Define el nombre del elemento.
 * **type** - Define el tipo del elemento. Algunos de los tipos más comunes son:
-  * xs:string
-  * xs:decimal
-  * xs:integer
-  * xs:boolean
-  * xs:date
-  * xs:time
+	* xs:string
+	* xs:decimal
+	* xs:integer
+	* xs:boolean
+	* xs:date
+	* xs:time
 
 ### Valores por defecto
 ``` xml title="default.xsd" linenums="1"
