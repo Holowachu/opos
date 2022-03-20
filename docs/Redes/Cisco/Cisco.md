@@ -19,6 +19,15 @@
 
 Para poder conectarnos de forma remota con un switch, será necesario configurar previamente una SVI de gestión en el switch para acceder a través de una IP asociada a la misma. Necesitamos la gateway si el switch tiene que poder ser administrado desde redes no conectadas directamente. En IPv6 ya coge la gateway automáticamente de los RA.
 
+Si queremos asignarle IPv6 al Switch primero tenemos que activar la doble pila y reiniciarlo (no viene por defecto):
+
+``` bnf
+! Activar doble pila en Switch
+S1(config)# sdm prefer dual-ipv4-and-ipv6 default
+S1(config)# end
+S1# copy running-config startup-config
+S1# reload
+```
 
 ``` bnf
 S1# configure terminal
@@ -48,6 +57,15 @@ S1(config-line)#login local
 S1(config-line)#transport input telnet
 ```
 
+En lugar de acceder con un usuario local, podemos simplemente configurar una contraseña para las líneas vty y loguearnos por telnet con ella. En este caso es importante activar el cifrado de contraseñas para que no sean directamente visibles:
+```bnf
+S1(config)# line console 0
+S1(config-line)# password contraseña123
+S1(config-line)# login
+S1(config-line)# exit
+S1(config)# service password-encryption
+```
+
 ### Acceso vía SSH en Router o Switch
 
 ```bnf
@@ -61,6 +79,6 @@ R1(config)#line vty 0 4
 R1(config-line)#login local
 R1(config-line)#transport input ssh
 ```
-*Previamente es necesario definir un hostname, un nombre de dominio y generar un par de claves RSA.
+*Antes de habilitar el SSH es necesario definir un hostname, un nombre de dominio y generar un par de claves RSA.
 
 
