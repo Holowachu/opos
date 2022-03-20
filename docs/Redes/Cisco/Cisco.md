@@ -13,7 +13,7 @@
 ![Modos de navegación](modos_ios.jpeg)
 ![Navegación entre modos](cisco_modes_diagram.png)
 
-## Configuración básica de Switch y Router
+## Acceso remoto
 
 ### Configuración de SVI en switch para acceso remoto
 
@@ -41,7 +41,7 @@ S1(config-if)# end
 S1# copy running-config startup-config
 ```
 
-### Acceso vía telnet en Router o Switch
+### Acceso vía telnet en router o switch
 
 ```bnf
 ! Poner contraseña al modo privilegiado (opcional):
@@ -66,7 +66,7 @@ S1(config-line)# exit
 S1(config)# service password-encryption
 ```
 
-### Acceso vía SSH en Router o Switch
+### Acceso vía SSH en router o switch
 
 ```bnf
 ! Configurar líneas de acceso remoto para acceder con usuarios locales por ssh v2 con clave de 2048 bits:
@@ -82,3 +82,32 @@ R1(config-line)#transport input ssh
 *Antes de habilitar el SSH es necesario definir un hostname, un nombre de dominio y generar un par de claves RSA.
 
 
+## Servidor DHCP
+
+Ejemplo de configuración de router para asignar IPs de la 192.168.10.10 a la 192.168.10.253 con opciones de gateway y DNS:
+
+```bnf
+R1(config)# ip dhcp excluded-address 192.168.10.1 192.168.10.9
+R1(config)# ip dhcp excluded-address 192.168.10.254 
+R1(config)# ip dhcp pool LAN-POOL-1
+R1(dhcp-config)# network 192.168.10.0 255.255.255.0
+R1(dhcp-config)# default-router 192.168.10.1
+R1(dhcp-config)# dns-server 192.168.11.5
+R1(dhcp-config)# domain-name example.com
+R1(dhcp-config)# end
+R1#
+```
+Configuración de reservas (asociaciones MAC <--> IP automáticas):
+
+```bnf
+R1(config)# ip dhcp pool RESERVA-1
+R1(dhcp-config)# hardware-address 0800.27AC.1234
+R1(dhcp-config)# host 192.168.10.254 255.255.255.0
+R1(dhcp-config)# end
+```
+
+Configurar un router como agente de retransmisión DHCP hacia un servidor (192.168.10.1):
+```bnf
+R1(config)# interface Gi0/0
+R1(config-if)# ip helper-address 192.168.10.1
+```
