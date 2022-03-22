@@ -79,7 +79,7 @@ R1(config)#line vty 0 4
 R1(config-line)#login local
 R1(config-line)#transport input ssh
 ```
-*Antes de habilitar el SSH es necesario definir un hostname, un nombre de dominio y generar un par de claves RSA.
+> Antes de habilitar el SSH es necesario definir un hostname, un nombre de dominio y generar un par de claves RSA.
 
 
 ## Servidor DHCP
@@ -111,7 +111,7 @@ Configurar un router como agente de retransmisión DHCP hacia un servidor (192.1
 R1(config)# interface Gi0/0
 R1(config-if)# ip helper-address 192.168.10.1
 ```
-*Se debe aplicar esta instrucción en la interfaz de la LAN donde recibirá las peticiones DHCP.
+> Se debe aplicar esta instrucción en la interfaz de la LAN donde recibirá las peticiones DHCP.
 
 ## VLANs
 
@@ -153,7 +153,7 @@ S1(config-if)# mls qos trust cos
 S1(config-if)# switchport voice vlan 10
 S1(config-if)# end
 ```
-*El comando `mls qos trust cos` garantiza que el tráfico de voz se identifique como tráfico prioritario.
+> El comando `mls qos trust cos` garantiza que el tráfico de voz se identifique como tráfico prioritario.
 
 #### Puertos en modo troncal
 
@@ -194,4 +194,4 @@ S1(config)# vtp mode client
 S1(config)# vtp domain dominio1
 S1(config)# vtp password contraseña123
 ```
-
+> La contraseña es opcional
