@@ -88,7 +88,8 @@ S1(config)# vtp password contraseña123
 ### Interconexión legacy
 
 Este método ya no se emplea por su mínima escalabilidad, y consiste en emplear una interfaz del router por VLAN.
-![Inter-VLAN legacy](inter-vlan-legacy.png)
+
+<img style="width: 300; height: auto; align: center;" src="../inter-vlan-legacy.png">
 
 * Configuración de R1:
 ```bash
@@ -127,7 +128,8 @@ S1(config-if)# end
 
 Es la configuración más habitual y escalable, pues hace uso de un enlace troncal y configura una subinterfaz por VLAN.
 
-<img style="float: right;" src="router-on-a-stick.jpeg">
+<img style="float: right;" src="../router-on-a-stick.jpeg">
+
 * Configuración router:
 ```bash
 R1(config)# interface FE0/0
