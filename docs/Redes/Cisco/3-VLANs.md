@@ -89,7 +89,7 @@ S1(config)# vtp password contraseña123
 
 Este método ya no se emplea por su mínima escalabilidad, y consiste en emplear una interfaz del router por VLAN.
 
-<img style="width: 300; height: auto; align: center;" src="../inter-vlan-legacy.png">
+<img style="width: 300px; height: auto; align: middle;" src="../inter-vlan-legacy.png">
 
 * Configuración de R1:
 ```bash
@@ -128,7 +128,7 @@ S1(config-if)# end
 
 Es la configuración más habitual y escalable, pues hace uso de un enlace troncal y configura una subinterfaz por VLAN.
 
-<img style="float: right;" src="../router-on-a-stick.jpeg">
+<img style="float: left;" src="../router-on-a-stick.jpeg">
 
 * Configuración router:
 ```bash
@@ -160,9 +160,36 @@ S1(config-if)# switchport access vlan 20
 S1(config-if)# interface Fa1/0/1
 S1(config-if)# switchport mode trunk
 S1(config-if)# switchport trunk allowed vlan 10,20
-S1(config-if)# switchport access vlan 20
 S1(config-if)# end
 ```
 > En caso de tener en cuenta la VLAN nativa para que la configuración del trunk contra el router fuese completamente correcta, habría que crear una subinterfaz dedicada para esta interfaz y emplear el comando `encapsulation dot1q 99 native` (suponiendo que sea la 99) y asignarle una IP, o bien configurar una IP directamente en la interfaz global (no en una subinterfaz).
 
-### 
+### MultiLayerSwitch o Switch de capa 3
+
+Es la opción de configuración más avanzada y hace uso de un MLS. Se trata de un switch con capacidad de enrutado, por lo tanto, si se habilita esta opción en el mismo con el comando `ip routing`, este será capaz de enrutar el tráfico entre las diferentes VLANs de un modo similar a como lo haría un router.
+
+<img style="width: 300px; height: auto; align: middle;" src="../inter-vlan-mls.png">
+
+* Configuración del MLS:
+```bash
+S1(config)# ip routing
+S1(config)# vlan 10
+S1(config-vlan)# name alumnos
+S1(config-vlan)# vlan 20
+S1(config-vlan)# name profesores
+S1(config-vlan)# interface vlan 10
+S1(config-if)# no shutdown
+S1(config-if)# ip address 10.1.10.1 255.255.255.0
+S1(config-if)# interface vlan 20
+S1(config-if)# no shutdown
+S1(config-if)# ip address 10.1.20.1 255.255.255.0
+S1(config-if)# interface Fa0/1
+S1(config-if)# switchport mode access
+S1(config-if)# switchport access vlan 10
+S1(config-if)# interface Fa0/2
+S1(config-if)# switchport mode access
+S1(config-if)# switchport access vlan 20
+S1(config-if)# end
+```
+> De este modo, el MLS realizaría todas las tareas de switch y router de los casos anteriores, pues las SVIs actúan de puerta de enlace, direccionando el tráfico de los puertos asignados a la VLAN correspondiente.
+> Si desde el MLS se desea enrutar hacia otros dispositivos de capa 3 sería necesario configurar un puerto como direccionable, deshabilitando su opción de puerto de switch con el comando `no switchport`, asignarle una IP de un modo similar a la interfaz de un router, y configurar el enrutado estático o dinámico.
