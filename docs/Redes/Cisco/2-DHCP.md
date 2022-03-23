@@ -53,7 +53,7 @@ Router(config-if)# ipv6 dhcp server POOL-LAN-1
 Router(config-if)# ipv6 nd managed-config-flag
 ```
 > Se puede configurar la duración de las concesiones con la opción lifetime al indicar la red del pool: `address prefix/length [lifetime {valid-lifetime preferred-lifetime | infinite}]`.
-> El comando `ipv6 nd` admite las opciones: `managed-config-flag` (statefull - M) y `other-config-flag` (stateless - O).
+> El comando `ipv6 nd` admite las opciones: `managed-config-flag` (statefull - M) y `other-config-flag` (stateless - O). Con la opción `prefix default no-autoconfig` pondríamos la flag A a 0, indicando que no se autoconfiguren las GLA con el prefijo anunciado.
 
 * Configuración de un router como cliente DHCPv6:
 <img style="width: 50%; margin-left: auto; margin-right: auto;" src="../dhcpv6-client.png">
@@ -62,6 +62,8 @@ R3(config)# interface g0/1
 R3(config-if)# ipv6 enable
 R3(config-if)# ipv6 address dhcp
 ```
+> El comando `ipv6 enable` se genera una LLA en esa interfaz.
+> Con el comand `ipv6 address autoconfig` la interfaz crearía su GUA con SLAAC.
 
 * Configurar un router como agente de retransmisión DHCPv6:
 ``` bash
