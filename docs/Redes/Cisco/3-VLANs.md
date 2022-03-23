@@ -89,7 +89,7 @@ S1(config)# vtp password contraseña123
 
 Este método ya no se emplea por su mínima escalabilidad, y consiste en emplear una interfaz del router por VLAN.
 
-<img style="width: 300px; height: auto; align: middle;" src="../inter-vlan-legacy.png">
+<img style="width: 50%; margin-left: auto; margin-right: auto;" src="../inter-vlan-legacy.png">
 
 * Configuración de R1:
 ```bash
@@ -128,7 +128,7 @@ S1(config-if)# end
 
 Es la configuración más habitual y escalable, pues hace uso de un enlace troncal y configura una subinterfaz por VLAN.
 
-<img style="float: left;" src="../router-on-a-stick.jpeg">
+<img style="float: right;" src="../router-on-a-stick.jpeg">
 
 * Configuración router:
 ```bash
@@ -168,7 +168,7 @@ S1(config-if)# end
 
 Es la opción de configuración más avanzada y hace uso de un MLS. Se trata de un switch con capacidad de enrutado, por lo tanto, si se habilita esta opción en el mismo con el comando `ip routing`, este será capaz de enrutar el tráfico entre las diferentes VLANs de un modo similar a como lo haría un router.
 
-<img style="width: 300px; height: auto; align: middle;" src="../inter-vlan-mls.png">
+<img style="width: 50%; margin-left: auto; margin-right: auto;" src="../inter-vlan-mls.png">
 
 * Configuración del MLS:
 ```bash
