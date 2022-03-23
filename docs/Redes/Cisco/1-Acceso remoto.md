@@ -1,4 +1,6 @@
-# Modos de navegación en IOS
+# Modos de navegación en IOS y acceso remoto
+
+## Modos de navegación
 
 * **Modo EXEC del usuario** --> Modo de trabajo limitado a operaciones básicas.
 * **Modo EXEC privilegiado** --> Permite la ejecución de todos los comandos de control, así como de comandos de configuración y administración.
@@ -11,9 +13,9 @@
 ![Modos de navegación](modos_ios.jpeg)
 ![Navegación entre modos](cisco_modes_diagram.png)
 
-# Acceso remoto
+## Acceso remoto
 
-## Configuración de SVI en switch para acceso remoto
+### Configuración de SVI en switch para acceso remoto
 
 Para poder conectarnos de forma remota con un switch, será necesario configurar previamente una SVI de gestión en el switch para acceder a través de una IP asociada a la misma. Necesitamos la gateway si el switch tiene que poder ser administrado desde redes no conectadas directamente. En IPv6 ya coge la gateway automáticamente de los RA.
 
@@ -39,7 +41,7 @@ S1(config-if)# end
 S1# copy running-config startup-config
 ```
 
-## Acceso vía telnet en router o switch
+### Acceso vía telnet en router o switch
 
 ```bash
 ! Poner contraseña al modo privilegiado (opcional):
@@ -64,7 +66,7 @@ S1(config-line)# exit
 S1(config)# service password-encryption
 ```
 
-## Acceso vía SSH en router o switch
+### Acceso vía SSH en router o switch
 
 ```bash
 ! Configurar líneas de acceso remoto para acceder con usuarios locales por ssh v2 con clave de 2048 bits:
