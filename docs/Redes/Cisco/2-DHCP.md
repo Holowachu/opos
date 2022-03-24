@@ -56,12 +56,12 @@ Router(config-if)# ipv6 nd managed-config-flag
 > El comando `ipv6 nd` admite las opciones: `managed-config-flag` (statefull - M) y `other-config-flag` (stateless - O). Con la opción `prefix default no-autoconfig` pondríamos la flag A a 0, indicando que no se autoconfiguren las GLA con el prefijo anunciado.
 
 * Configuración de un router como cliente DHCPv6:
-<img style="width: 50%; margin-left: auto; margin-right: auto;" src="../dhcpv6-client.png">
 ``` bash
 R3(config)# interface g0/1
 R3(config-if)# ipv6 enable
 R3(config-if)# ipv6 address dhcp
 ```
+<img style="width: 50%; margin-left: auto; margin-right: auto;" src="../dhcpv6-client.png">
 > El comando `ipv6 enable` se genera una LLA en esa interfaz.
 > Con el comand `ipv6 address autoconfig` la interfaz crearía su GUA con SLAAC.
 
