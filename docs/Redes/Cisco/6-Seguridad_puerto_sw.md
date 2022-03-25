@@ -42,11 +42,11 @@ Sw(config)# interface interface-id
 Sw(config-if)# switchport port-security violation {protect|restrict|shutdown}
 ```
   
- | Protegido (protect) | Restringido (restrict) | Apagar (shutdown)*
---------------------------- | ------------------- | ---------------------- | ------------------
-Descartar tráfico ofensivo | Si | Si | Si
-Envía mensajes de registro y SNMP | No | Si | Si
-Incrementa el contador de violación por cada violación de trama que llega | No | Si | Si
-Deshabilita la interfaz poniéndola en estado err-disable y descartando todo el tráfico | No | No | Si
+| | Protegido (protect) | Restringido (restrict) | Apagar (shutdown)* |
+| --------------------------- | ------------------- | ---------------------- | ------------------ |
+| Descartar tráfico ofensivo | Si | Si | Si |
+| Envía mensajes de registro y SNMP | No | Si | Si |
+| Incrementa el contador de violación por cada violación de trama que llega | No | Si | Si |
+| Deshabilita la interfaz poniéndola en estado err-disable y descartando todo el tráfico | No | No | Si |
 
 > *shutdown es la acción de configuración por defecto.
