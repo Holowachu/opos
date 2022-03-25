@@ -39,19 +39,15 @@ Para ello, los switches intercambian BPDUs para compartir información sobre ell
 > * 1 Gbps --> 20000
 > * 100 Mbps --> 200000
 > * 10 Mbps --> 2000000
-
 <img style="width: 50%; margin-left: auto; margin-right: auto;" src="../stp-2.png">
 
 3. **Elección de los puertos designados**: En el puente raíz, todos los puertos son puertos designados. El resto de puentes, establecerán un puerto designado en cada segmento entre 2 switches. El puerto designado será aquel que tenga un menor coste de conexión con el puente raíz (o el puerto del puente que tenga menor BID en caso de que los puertos de ambos extremos del enlace tengan el mismo coste).
-
 <img style="width: 50%; margin-left: auto; margin-right: auto;" src="../stp-3.png">
 
 4. **Bloqueo de puertos**: Los puertos que no están establecidos como puertos raíz ni designados se establecen como puertos bloqueados o puertos alternativos (o de backup). Estos puertos ni envían ni reciben tráfico para prevenir la formación de bucles, a excepción de las tramas BPDU del propio protocolo STP.
-
 <img style="width: 50%; margin-left: auto; margin-right: auto;" src="../stp-4.png">
 
 5. **Reconfiguración de STP**: En caso de caída de un enlace de la red, se aplica de nuevo el algoritmo STA para determinar los nuevos puertos raíz, designados y alternativos. Esto provocará que se activen enlaces hasta ahora bloqueados, para mantener la conectividad en la red.
-
 <img style="width: 50%; margin-left: auto; margin-right: auto;" src="../stp-5.png">
 
 ## Comandos STP
