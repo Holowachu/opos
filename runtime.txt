@@ -1,2 +1,2 @@
 3.8
-pip install jinja2==3.0.0
+pip install Jinja2==3.0.0
