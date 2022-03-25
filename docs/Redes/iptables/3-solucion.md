@@ -25,6 +25,6 @@ iptables -A FORWARD -d 192.168.254.200 -i eth0 -o eth1 -p tcp -m multiport -dpor
 ```
 c) Débese pór un límite de 25 conexións por segundo aos portos 80 e 443 dende Internet.
 
-d) Rexistrarase (facer log) calquera intento de conexión que non estea permitido e débese engadir o texto “ConxProh:” ao rexistro. (Nota: o servidor de logs é o que está instalado por defecto en Debian 10: syslog)
+d) Rexistrarase (facer log) calquera intento de conexión que non estea permitido e débese engadir o texto “ConxProh:” ao rexistro. (Nota: o servidor de logs é o que está instalado por defecto en Debian 10: syslog).
 
 e) Débense eliminar tódolos paquetes de información que chegan pola tarxeta eth0 (dende Internet) e que teñan tódolos bits da cabeceira TCP igual a 0.
