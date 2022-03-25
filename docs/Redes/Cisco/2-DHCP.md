@@ -33,7 +33,7 @@ R1(config)# interface Gi0/0
 R1(config-if)# ip helper-address 192.168.10.1
 ```
 > Se debe aplicar esta instrucción en la interfaz de la LAN donde recibirá las peticiones DHCP.
-
+> Para que una interfaz obtenga IP por DHCP el comando sería `ip address dhcp`.
 ## DHCPv6
 
 En IPv6 la configuración de direccionamiento de los hosts se puede configurar de varios modos. Por defecto un router con IPv6 habilitado (`ipv6 unicast-routing`), envía RA periódicamente con información sobre el prefijo IPv6, la puerta de enlace, servidores, etc. Los hosts pueden o bien emplear esta información para generar su propia GUA (indicador A en RA), o bien ser redireccionados hacia un servidor DHCPv6, ya sea para obtener información adicional de red (stateless -  indicador O en RA) o para que directamente este les asigne una GUA (stateful -  indicador M en RA).
