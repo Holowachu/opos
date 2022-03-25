@@ -5,6 +5,7 @@ STP es un protocolo de red de prevención de bucles que permite redundancia mien
 Es un protocolo dinámico capaz de reaccionar a cambios en la red, reactivando puertos bloqueados en caso de perder conectividad por otros enlaces inicialmente activos.
 
 Para generar esta topología sin bucles STP realiza 4 pasos:
+
 1. Elige el puente raíz.
 2. Selecciona los puertos raíz.
 3. Elige los puertos designados.
