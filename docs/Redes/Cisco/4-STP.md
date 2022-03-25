@@ -22,7 +22,7 @@ Para ello, los switches intercambian BPDUs para compartir información sobre ell
 ## Proceso STP detallado
 
 1. **Elección del puente raíz (root bridge)**: Esta elección se realiza escogiendo el puente con menor BID (Bridge ID). El puente raíz será el nodo raíz de la topología de árbol:
-<br><img style="width: 50%; margin-left: auto; margin-right: auto;" src="../stp-1.png">
+<br>![Root bridge](stp-1.png=200x)
 
 2. **Elección de los puertos raíz**: En todos los puentes que no son el raíz, se utiliza el algoritmo de árbol expandido (STA) para escoger como puerto raíz al que tenga un menor coste de conexión hasta el puerto raíz. Este algoritmo tiene en cuenta los costes de aquellos puertos que forman los enlaces que hay que atravesar, determinados por la velocidad de los mismos.
 > El coste de un puerto puede configurarse manualmente para alterar la elección del puerto raíz, pero el estándar STP define los siguientes valores:
@@ -40,7 +40,7 @@ Para ello, los switches intercambian BPDUs para compartir información sobre ell
 > * 10 Mbps --> 2000000
 <br><img style="width: 50%; margin-left: auto; margin-right: auto;" src="../stp-2.png">
 
-3. **Elección de los puertos designados**: En el puente raíz, todos los puertos son puertos designados. El resto de puentes, establecerán un puerto designado en cada segmento entre 2 switches. El puerto designado será aquel que tenga un menor coste de conexión con el puente raíz (o el puerto del puente que tenga menor BID en caso de que los puertos de ambos extremos del enlace tengan el mismo coste).
+1. **Elección de los puertos designados**: En el puente raíz, todos los puertos son puertos designados. El resto de puentes, establecerán un puerto designado en cada segmento entre 2 switches. El puerto designado será aquel que tenga un menor coste de conexión con el puente raíz (o el puerto del puente que tenga menor BID en caso de que los puertos de ambos extremos del enlace tengan el mismo coste).
 <br><img style="width: 50%; margin-left: auto; margin-right: auto;" src="../stp-3.png">
 
 4. **Bloqueo de puertos**: Los puertos que no están establecidos como puertos raíz ni designados se establecen como puertos bloqueados o puertos alternativos (o de backup). Estos puertos ni envían ni reciben tráfico para prevenir la formación de bucles, a excepción de las tramas BPDU del propio protocolo STP.
