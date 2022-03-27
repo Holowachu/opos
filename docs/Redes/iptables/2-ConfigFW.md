@@ -45,7 +45,7 @@ iptables -A WEB_INTRA -s 192.168.56.1 -j ACCEPT
 iptables -A WEB_INTRA -s 192.168.56.2 -j ACCEPT
 iptables -A WEB_INTRA -s 192.168.56.253 -j ACCEPT
 
-iptables -A WEB_INTRA -m iprange --src-range 192.168.56.3-192.168.56.100 -m time --timestart 07:00:00 --timestop 15:0:00 --weekdays Mon,Tue,Wed,Thu,Fri --kerneltz -j ACCEPT
+iptables -A WEB_INTRA -m iprange --src-range 192.168.56.3-192.168.56.100 -m time --timestart 07:00:00 --timestop 15:00:00 --weekdays Mon,Tue,Wed,Thu,Fri --kerneltz -j ACCEPT
 
 iptables -A WEB_INTRA -j DROP
 
