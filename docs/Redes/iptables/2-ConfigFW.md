@@ -71,7 +71,7 @@ iptables -A SSH -m limit --limit 5/m --limit-burst 10 -j LOG --log-prefix "iptab
 #Furtive port scanner:
 iptables -A FORWARD -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit 1/s -j ACCEPT
 #REJECT especial
-iptables -I INPUT - P tcp - -tcp- flags ALL SYN -j REJECT - -reject-with tcp-reset
+iptables -I INPUT - P tcp --tcp -flags ALL SYN -j REJECT --reject-with tcp-reset
 #Ping of death:
 iptables -A FORWARD -p icmp --icmp-type echo-request -m limit --limit 1/s -j ACCEPT
 ```
