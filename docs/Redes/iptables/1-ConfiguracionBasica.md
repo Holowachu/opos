@@ -1,4 +1,4 @@
-#Configuración básica de Netfilter/IPTABLES
+# Configuración básica de Netfilter/IPTABLES
 |![Tablas y cadenas predeterminadas más utilizadas en netfilter](netfilter_abreviado_003.png)|
 |:--:|
 |**Imagen 1:** Tablas y cadenas predeterminadas más utilizadas en netfilter|
@@ -6,14 +6,14 @@
 |:--:|
 |**Imagen 2:** Tablas Entrada -> Salida|
 
-##Configuración básica
-###Politicas por defecto
+## Configuración básica
+### Políticas por defecto
 ```bash title="Denegar por defecto (CleanUp Rules)"
 iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 ```
-###Reglas estáticas
+### Reglas estáticas
 No guardan el estado de las conexiones
 ```bash title="Salida"
 iptables -A OUTPUT -p udp --dport 53 -d 8.8.8.8 -j ACCEPT
@@ -27,7 +27,7 @@ iptables -A INPUT -p udp --sport 53 -s 8.8.4.4 -j ACCEPT
 iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -j ACCEPT
 iptables -A INPUT -p tcp -m multiport --sports 80,443 -j ACCEPT
 ```
-###Reglas con estados persistentes
+### Reglas con estados persistentes
 ```bash title="Persistentes"
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
@@ -37,7 +37,7 @@ iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m state --state NEW -j A
 
 iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
 ```
-##SNAT (Source Network Address Translation)
+## SNAT (Source Network Address Translation)
 En netfilter, **SNAT o Masquerade** se realizan en la cadea **POSTROUTING** y permite especificar:
 
 1. La Dirección IP origen que debe ponerse
