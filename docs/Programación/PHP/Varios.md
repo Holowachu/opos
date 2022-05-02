@@ -10,14 +10,13 @@ password_verify($password, $hash)
 ```
 ## Subir Ficheros
 ``` php
-<?php
 <form enctype="multipart/form-data" action="upload.php" method="POST">
     <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
     Elige el archivo a subir: <br>
     <input name="uploadedfile" type="file" /><br />
     <input type="submit" value="Subir archivo" />
 </form>
-
+<?php
 $target_path  =  "uploads/";
 $target_path  =  $target_path  .  basename($_FILES['uploadedfile']['name']);
 if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
