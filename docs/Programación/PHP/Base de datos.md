@@ -1,6 +1,7 @@
 # Base de datos
 ## PDO
 ``` php
+<?php
 try {
 $dsn = "mysql:host=localhost;dbname=$dbname";
 $dbh = new PDO($dsn, $user, $password);
@@ -37,6 +38,7 @@ $dbh->rollback();
 
 ## MySQLi
 ```php
+<?php
 $db = new mysqli($server, $user, $password, $dbname);
 // Comprobar conexión
 if($db->connect_error){
