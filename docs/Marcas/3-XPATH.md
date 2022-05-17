@@ -318,7 +318,6 @@ Empregue expresións XPath para obter os seguintes datos:
 ```xslt
 //cliente[@id=//reserva_habitación[fechaEntrada/@mes="Agosto"]/@cliente]/nombre/text()
 ```
-
 ```xslt
 #otras soluciones
 # Recuperando datos del padre
