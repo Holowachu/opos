@@ -317,6 +317,11 @@ Empregue expresións XPath para obter os seguintes datos:
 * O nome dos clientes que reservaron algunha habitación para entrar en Agosto.
 ```xslt
 //cliente[@id=//reserva_habitación[fechaEntrada/@mes="Agosto"]/@cliente]/nombre/text()
+# Recuperando datos del padre
+//cliente[(@id=//reserva_habitación/fechaEntrada[@mes="Agosto")]/../@cliente]/nombre/text()
+# Clientes con una reserva cualquiera
+//cliente[@id=//*[starts-with(name(), 'reserva')][fechaEntrada/@mes="Agosto"]/@cliente]/nombre/text()
+
 ```
 
 * O identificador (id) dos clientes que teñan un nome que empece por F.
