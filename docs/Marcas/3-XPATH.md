@@ -330,6 +330,8 @@ Empregue expresións XPath para obter os seguintes datos:
 * O identificador (id) dos clientes que teñan un nome que empece por F.
 ```xslt
 //cliente[starts-with(nombre,"F")]/@id
+#para obener unicamente el valor del atributo
+//cliente[starts-with(nombre,"F")]/string(@id)
 ```
 ```xslt
 #otras posibles soluciones:
