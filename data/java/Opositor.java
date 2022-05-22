@@ -73,7 +73,7 @@ public class Opositor implements Serializable {
     }
 
     public void setDNI(String dni) throws OpositorException {
-        Pattern p = Pattern.compile("^[0-9]{7,8}[a-z,A-Z]$");
+        Pattern p = Pattern.compile("^[0-9]{7,8}[a-zA-Z]$");
         Matcher m = p.matcher(dni);
         if (!m.find()) {
             throw new OpositorException("DNI no válido: " + dni);
@@ -87,7 +87,7 @@ public class Opositor implements Serializable {
 
     public void setCorreo(String correo) throws OpositorException {
         Pattern p = Pattern.compile(
-                "^[a-z,A-Z,\\_][0-9,a-z,A-Z,\\_,\\.]*@[0-9,a-z,A-Z]{2,}[0-9,a-z,A-Z,\\_,\\.]*\\.[0-9,a-z,A-Z,\\_]{2,}$");
+                "^[a-zA-Z\\_][0-9a-zA-Z\\_\\.]*@[0-9a-zA-Z]{2,}[0-9a-zA-Z\\_\\.]*\\.[0-9a-zA-Z\\_]{2,}$");
         Matcher m = p.matcher(correo);
         if (!m.find()) {
             throw new OpositorException("correo no válido: " + correo);
@@ -137,6 +137,16 @@ public class Opositor implements Serializable {
            for (String email : opositor.getCorreos()) {
             var c = doc.createElement("correo");
             c.setNodeValue(email);
+            c.setAttribute("name", "value");
+            /*
+            c.setAttribute("name", "value");
+            //otra forma
+            var test = doc.createAttribute("test");
+            test.setNodeValue("valor atributo");
+            c.setAttributeNode(test);
+
+            
+            */
             op.appendChild(c);
            }
            root.appendChild(op);
