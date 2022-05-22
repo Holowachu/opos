@@ -154,7 +154,7 @@ public class Opositor implements Serializable {
             //A DESENVOLVER APARTADO D[…]
             throw new OpositorException(e.getMessage());
         }
-
+    }
     public static void main(String[] args) {
         try {
             Opositor o = new Opositor();
