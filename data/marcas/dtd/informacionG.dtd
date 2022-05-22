@@ -7,6 +7,6 @@
 <!ATTLIST informacion curso CDATA #FIXED "1">
 <!ATTLIST software codigo ID #REQUIRED
                     tipo (gratuito|comercial) #IMPLIED>
-<!ATTLIST dataPubli ano CDATA "2015"
+<!ATTLIST dataPubli ano CDATA "2015" 
                     mes CDATA #REQUIRED>
 <!ATTLIST modulo usa IDREFS #IMPLIED>
