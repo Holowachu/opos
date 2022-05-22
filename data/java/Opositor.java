@@ -86,8 +86,8 @@ public class Opositor implements Serializable {
     }
 
     public void setCorreo(String correo) throws OpositorException {
-        Pattern p = Pattern.compile(
-                "^[a-zA-Z\\_][0-9a-zA-Z\\_\\.]*@[0-9a-zA-Z]{2,}[0-9a-zA-Z\\_\\.]*\\.[0-9a-zA-Z\\_]{2,}$");
+       // Pattern p = Pattern.compile("^[a-zA-Z\\_][0-9a-zA-Z\\_\\.]*@[0-9a-zA-Z]{2,}[0-9a-zA-Z\\_\\.]*\\.[0-9a-zA-Z\\_]{2,}$");
+        Pattern p = Pattern.compile("^[a-zA-Z\\_][\\w\\_\\.]*@[\\w]{2,}[\\w\\_\\.]*\\.[\\w\\_]{2,}$");
         Matcher m = p.matcher(correo);
         if (!m.find()) {
             throw new OpositorException("correo no válido: " + correo);
