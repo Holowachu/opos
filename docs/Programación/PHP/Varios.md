@@ -47,12 +47,25 @@ spl_autoload_register(function ($nombre_clase) {
 <?php
 class MyDestructableClass
 {
+    static function test(){print ("test");}
+     private function textoSaludo(string $nombre, string $apellidos): string {   return 'HOLA ' . $nombre . " ".$apellidos; }
     function __construct() {
         print "En el constructor\n";
+        //self: hace referencia a la clase actual.
+        //this: hace referencia al objeto actual.
+        self::test();
+        echo $this->textoSaludo("Pepe");
+        $this->secretos("no contar","no leer");
+        $this->textoSaludo(...["Pepe","gotera"]);
     }
 
     function __destruct() {
         print "Destruyendo " . __CLASS__ . "\n";
+    }
+
+
+    private function secretos(...$Secretos) {
+       var_dump($secretos); // array con parametros
     }
 }
 
