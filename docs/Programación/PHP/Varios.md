@@ -127,3 +127,49 @@ fwrite($handle, "contenido");
 fseek($handle, 0); 
 fclose($handle);
 ```
+
+## Expresiones regulares
+
+Metacaracteres fuera de los corchetes:
+Metacarácter	Descripción
+\	escape
+^	inicio de string o línea
+$	final de string o línea
+.	coincide con cualquier carácter excepto nueva línea
+[	inicio de la definición de clase carácter
+]	fin de la definición de clase carácter
+|	inicio de la rama alternativa
+(	inicio de subpatrón
+)	fin de subpatrón
+?	amplía el significado del subpatrón, cuantificador 0 ó 1, y hace lazy los cuantificadores greedy
+*	cuantificador 0 o más
++	cuantificador 1 o más
+{	inicio de cuantificador mín/máx
+}	fin de cuantificador mín/máx
+Metacaracteres dentro de los corchetes:
+Metacarácter	Descripción
+\	carácter de escape general
+^	niega la clase, pero sólo si es el primer carácter
+-	indica el rango de caracteres
+
+Secuencia	Coincidencia	Equivalencia
+\d	Cualquier carácter numérico	[0-9]
+\D	Cualquier carácter no numérico	[^0-9]
+\s	Cualquier espacio	[\t\n\r\f\v]
+\S	Cualquiera que no sea espacio	[^ \t\n\r\f\v]
+\w	Cualquier carácter alfanumérico	[a-zA-Z0-9_]
+\W	Cualquier carácter no alfanumérico	[^a-zA-Z0-9_]
+
+
+Modificador	Significado
+i	Insensible a mayúsculas y minúsculas
+m	Múltiples líneas
+x	Se pueden añadir comentarios
+u	Strings de patrones y objetivos son tratados como UTF-8
+
+```php
+<?php
+if(preg_match("/^calle/i", $direccion)) { //i	Insensible a mayúsculas y minúsculas
+
+}
+```

@@ -16,6 +16,9 @@ while($row = $stmt->fetch(PDO::FETCH_OBJ)){
 }
 //Array de objetos PDO::FETCH_OBJ otras opciones: PDO::FETCH_ASSOC, PDO::FETCH_CLASS FETCH_BOUND
 $clientes = $stmt->fetchAll(PDO::FETCH_OBJ);
+foreach ($cliestes as $cliente ) {
+    //TODO
+}
 
 $stmt->setFetchMode(PDO::FETCH_CLASS, 'Clientes');
 $clientes = $stmt->fetchAll(PDO::FETCH_CLASS, 'Clientes');
