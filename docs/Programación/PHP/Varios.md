@@ -129,7 +129,7 @@ fclose($handle);
 ```
 
 ## Expresiones regulares
-
+```
 Metacaracteres fuera de los corchetes:
 Metacarácter	Descripción
 \	escape
@@ -166,7 +166,7 @@ i	Insensible a mayúsculas y minúsculas
 m	Múltiples líneas
 x	Se pueden añadir comentarios
 u	Strings de patrones y objetivos son tratados como UTF-8
-
+```
 ```php
 <?php
 if(preg_match("/^calle/i", $direccion)) { //i	Insensible a mayúsculas y minúsculas
