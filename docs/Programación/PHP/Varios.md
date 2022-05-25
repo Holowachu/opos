@@ -1,5 +1,5 @@
 
-# Seguridad
+# Varios php
 
 ## Password hash
 ```php
