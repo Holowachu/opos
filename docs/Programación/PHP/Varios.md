@@ -58,3 +58,59 @@ class MyDestructableClass
 
 $obj = new MyDestructableClass();
 ```
+
+## Sesiones
+```php
+<?php
+if (session_status() === PHP_SESSION_ACTIVE) {} ;
+session_start();
+session_unset();
+session_destroy();
+$_SESSION[];
+```
+## Cookies
+``` php
+<?php 
+setcookie(string $name,
+    string $value = "",
+    int $expires = 0,
+    string $path = "",
+    string $domain = "",
+    bool $secure = false,
+    bool $httponly = false
+): bool
+setcookie("TestCookie", $value, time()+3600);  /* expira en 1 hora */
+setcookie("TestCookie", $value, time()-60); /* Solicitar borrar cookie*/
+setcookie("TestCookie", $value, time()+3600, "/~rasmus/", "example.com", 1);
+$_COOKIE["TestCookie"]
+```
+
+## Header
+```php
+<?php
+header('Location: http://www.example.com/');
+// 301 Moved Permanently
+header("Location: /foo.php",TRUE,301);
+//--------
+header("HTTP/1.0 404 Not Found");
+exit;
+header('Content-Type: application/pdf');
+header('Content-Disposition: attachment; filename="downloaded.pdf"');
+// La fuente de PDF se encuentra en original.pdf
+readfile('original.pdf');
+?>
+```
+
+## Ficheros
+```php
+<?php
+$líneas = file('http://www.example.com/'); //array con las lineas del fichero
+$página_inicio = file_get_contents('http://www.example.com/'); //contenido completo del fichero en una variable
+
+
+$handle = fopen("/home/rasmus/fichero.txt", "r");
+//'r''r+''w''w+''a''a+''x''x+''c''c+''e'
+fwrite($handle, "contenido"); 
+fseek($handle, 0); 
+fclose($handle);
+```
