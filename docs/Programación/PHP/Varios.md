@@ -172,4 +172,10 @@ u	Strings de patrones y objetivos son tratados como UTF-8
 if(preg_match("/^calle/i", $direccion)) { //i	Insensible a mayúsculas y minúsculas
 
 }
+echo preg_match("/\[\]/", $string, $matches);
+
+$string = '123456789';
+// Si se añade un tercer elemento a preg_match_all devuelve un array con lo encontrado
+preg_match_all("/[^2468]/", $string, $matches);
+var_dump($matches); // Devuelve array con 1, 3, 5, 7 y 9
 ```
