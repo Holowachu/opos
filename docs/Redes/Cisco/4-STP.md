@@ -78,7 +78,7 @@ S3(config)# spanning-tree vlan 20 root primary
 S3(config)# spanning-tree vlan 10 root secondary
 ```
 ```bash
-(config)# spanning-tree vlan 10 root primary
+S1(config)# spanning-tree vlan 10 root primary
 S1(config)# spanning-tree vlan 20 root secondary
 ```
 > En este ejemplo conseguimos balancear la carga de tráfico de las diferentes VLANs entre todos los enlaces que interconectan a los 3 switches, al forzar la elección de puentes raíz diferentes para cada VLAN.
