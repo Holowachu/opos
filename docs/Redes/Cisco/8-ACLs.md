@@ -11,6 +11,8 @@
 > De manera predeterminada las ACLs no bloquean el tráfico originado en el router, por lo que una ACL aplicada en salida en una interfaz será ignorada por los paquetes que el router genere y envíe por la misma.
 ---
 
+## Configuración de ACLs IPv4 en Cisco
+
 * Crear ACL:
 ```bash
 Router(config)# ip access-list [standard | extended] name
@@ -90,6 +92,8 @@ R1(config-if)# ip access-group REPLY-PC1 out
 R1(config-if)# end
 R1#
 ```
+
+## Configuración de ACLs IPv6 en Cisco
 
 * Ejemplo ACL IPv6:
 ```bash
