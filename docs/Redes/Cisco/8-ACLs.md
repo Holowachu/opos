@@ -60,9 +60,9 @@ R1(config-line)# access-class ACL_1 in
 ```bash
 {deny | permit | remark text} protocol source source-wildcard [operator {port}] destination destination-wildcard [operator {port}] [established] [log]
 ```
-> *protocol* → ip, icmp, tcp, udp... 
-> *operator* → lt (less than), gt (greater than), eq (equal), neq (not equal)
-> *established* → Conexión establecida (**solo para TCP!**)
+> * *protocol* → ip, icmp, tcp, udp... 
+> * *operator* → lt (less than), gt (greater than), eq (equal), neq (not equal)
+> * *established* → Conexión establecida (**solo para TCP!**)
 
 
 * Ejemplo ACL extendida:
