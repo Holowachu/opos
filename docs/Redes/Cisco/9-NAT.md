@@ -75,7 +75,7 @@ Router(config-if)# description Interfaz WAN
 Router(config-if)# ip address 10.10.10.1
 Router(config-if)# ip nat outside
 ```
-> En este caso los hosts de la red 192.168.10.0/24 saldrían hacia la WAN identificados por una IP del pool 10.10.10.1 ~ 10.10.10.5
+> * En este caso los hosts de la red 192.168.10.0/24 saldrían hacia la WAN identificados por una IP del pool 10.10.10.1 ~ 10.10.10.5
 > * No se podrán realizar más de 5 traducciones a la vez, pues se establecen correspondencias 1:1
 > * Nótese que no es necesario que alguna de esas IPs esté configurada en una interfaz del router, lo importante es que el router anuncie la ruta hacia esas IPs del pool si utiliza enrutado dinámico o bien en el resto de routers se indique que para llegar a las IPs de ese pool deben enviar el tráfico hacia ese router.
 
@@ -118,7 +118,7 @@ Router(config-if)# description Interfaz WAN
 Router(config-if)# ip address 10.10.10.1
 Router(config-if)# ip nat outside
 ```
-> En este caso los hosts de la red 192.168.10.0/24 saldrían hacia la WAN identificados por una IP del pool 10.10.10.1 ~ 10.10.10.5
+> * En este caso los hosts de la red 192.168.10.0/24 saldrían hacia la WAN identificados por una IP del pool 10.10.10.1 ~ 10.10.10.5
 > * En este caso sí se podrán realizar más de 5 traducciones simultáneas, pues empleamos sobrecarga de puertos.
 > * Nótese que no es necesario que alguna de esas IPs esté configurada en una interfaz del router, lo importante es que el router anuncie la ruta hacia esas IPs del pool si utiliza enrutado dinámico o bien en el resto de routers se indique que para llegar a las IPs de ese pool deben enviar el tráfico hacia ese router.
 
