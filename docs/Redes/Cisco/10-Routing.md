@@ -31,7 +31,7 @@ Router(config)# ip route 0.0.0.0 0.0.0.0 Serial 0
 > Cabe destacar que esta ruta matchea con cualquier destino, pero su prefijo es el más largo posible (/32), por lo que únicamente se aplicará si no se encuentra otra ruta más específica.
 
 ### Distancias administrativas predeterminadas:
-| | Tipo de ruta | Distancia por defecto |
+| Tipo de ruta | Distancia por defecto |
 | ----------- | --- |
 | Interfaz o conectada | 0 |
 | Estática | 1 |
