@@ -43,16 +43,20 @@ En IPv6 la configuración de direccionamiento de los hosts se puede configurar d
 * Configuración de router como servidor DHCPv6 statefull:
 ``` bash
 Router(config)# ipv6 unicast-routing
-Router(config)# ipv6 dhcp pool POOL-LAN-1
-Router(config-dhcpv6)# address prefix 2001:1DB8:CAFE::/64
+Router(config)# ipv6 dhcp pool DHCP-LAN-1
+Router(config-dhcpv6)# prefix-delegation pool POOL-LAN-1
 Router(config-dhcpv6)# dns-server 2001:1DB8:CAFE::6
 Router(config-dhcpv6)# domain-name xunta.gal
 Router(config-dhcpv6)# interface G0/0
+Router(config-if)# no shutdown
 Router(config-if)# ipv6 address 2001:1DB8:CAFE::1/64
-Router(config-if)# ipv6 dhcp server POOL-LAN-1
+Router(config-if)# ipv6 address FE80::1 link-local
+Router(config-if)# exit
+Router(config)# ipv6 local pool POOL-LAN-1 2001:1DB8:CAFE::/64 64
+Router(config)# interface G0/0
+Router(config-if)# ipv6 dhcp server DHCP-LAN-1
 Router(config-if)# ipv6 nd managed-config-flag
 ```
-> Se puede configurar la duración de las concesiones con la opción lifetime al indicar la red del pool: `address prefix/length [lifetime {valid-lifetime preferred-lifetime | infinite}]`.
 > El comando `ipv6 nd` admite las opciones: `managed-config-flag` (statefull - M) y `other-config-flag` (stateless - O). Con la opción `prefix default no-autoconfig` pondríamos la flag A a 0, indicando que no se autoconfiguren las GLA con el prefijo anunciado.
 
 * Configuración de un router como cliente DHCPv6:

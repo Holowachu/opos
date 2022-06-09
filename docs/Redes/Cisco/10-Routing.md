@@ -73,7 +73,9 @@ Router(config)# ip route ::/0 2001:db8:c::9f:35
 
 ## Enrutamiento dinámico
 
-### Configuración básica de RIP en IPv4
+### RIP
+
+#### Configuración básica de RIP en IPv4
 
 ```bash
 Router(config)# router rip
@@ -91,14 +93,123 @@ Router(config-router)# redistribute static
 > * El comando `passive-interface` indica las interfaces por las que no se difundirá tráfico de control RIP (habitualmente las de las redes LAN).
 > * El comando `redistribute` se emplea para que RIP redistribuya rutas aprendidas por otros medios como estáticas (`static`), OSPF (`ospf`)...
 
-### Configuración básica de RIP en IPv6
+#### Configuración básica de RIP en IPv6
 
 ```bash
 Router(config)# ipv6 unicast-routing
-Router(config)# ipv6 router rip proceso1
+Router(config)# ipv6 router rip proceso-rip
 Router(config-router)# exit
 Router(config)# interface FastEthernet0/0
 Router(config-if)# ipv6 address 2001:DB8::/64 eui-64
-Router(config-if)# ipv6 rip process1 enable
+Router(config-if)# ipv6 rip proceso-rip enable
 ```
-> * 
+> * Debemos activar proceso en todas las interfaces donde se encuentren las redes que queramos publicar y en las que comunican con otros routers.
+
+### OSPF
+
+#### Configuración básica de OSPF en IPv4
+
+```bash
+Router(config)# router ospf 1
+Router(config-router)# router-id 1.1.1.1
+Router(config-router)# network 192.168.1.0 0.0.0.255 area 0
+Router(config-router)# network 200.200.1.0 0.0.255.255 area 0
+Router(config-router)# passive-interface Fa0/0
+```
+
+#### Configuración de OSPF multiárea
+
+![OSPFv2 multiárea](OSPFv2-multiárea.png)
+
+* Configuración de R1:
+```bash
+R1(config)# router ospf 10
+R1(config-router)# router-id 1.1.1.1
+R1(config-router)# network 10.1.1.1 0.0.0.0 area 1
+R1(config-router)# network 10.1.2.1 0.0.0.0 area 1
+R1(config-router)# network 192.168.10.1 0.0.0.0 area 0
+R1(config-router)# end
+R1#
+```
+
+* Configuración de R2:
+```bash
+R2(config)# router ospf 10
+R2(config-router)# router-id 2.2.2.2
+R2(config-router)# network 192.168.10.0 0.0.0.3 area 0
+R2(config-router)# network 192.168.10.4 0.0.0.3 area 0
+R2(config-router)# network 10.2.1.0 0.0.0.255 area 0
+R2(config-router)# end
+R2#
+```
+* Configuración de R3:
+```bash
+R3(config)# router ospf 10
+R3(config-router)# router-id 3.3.3.3
+R3(config-router)# network 192.168.10.6 0.0.0.0 area 0
+R3(config-router)# network 192.168.1.1 0.0.0.0 area 2
+R3(config-router)# network 192.168.2.1 0.0.0.0 area 2
+R3(config-router)# end
+```
+
+#### Configuración de OSPF multiárea en IPv6: OSPFv3
+
+![OSPFv3 multiárea](OSPFv3-multiárea.png)
+
+* Configuración de R1:
+```bash
+R1(config)# ipv6 router ospf 10
+R1(config-rtr)# router-id 1.1.1.1
+R1(config-rtr)# exit
+R1(config)# interface GigabitEthernet 0/0
+R1(config-if)# ipv6 ospf 10 area 1
+R1(config-if)# 
+R1(config-if)# interface Serial0/0/0
+R1(config-if)# ipv6 ospf 10 area 0
+R1(config-if)# end
+R1#
+```
+
+* Configuración de R2:
+```bash
+R2(config)# ipv6 router ospf 10
+R2(config-rtr)# router-id 2.2.2.2
+R2(config-rtr)# exit
+R2(config)# interfaz g0/0
+R2(config-if)# ipv6 ospf 10 area 0
+R2(config-if)# interfaz S0/0/0
+R2(config-if)# ipv6 ospf 10 area 0
+R2(config-if)# interfaz S0/0/1
+R2(config-if)# ipv6 ospf 10 area 0
+R2(config-if)# end
+```
+
+* Configuración de R2:
+```bash
+R3(config)# ipv6 router ospf 10
+R3(config-rtr)# router-id 3.3.3.3
+R3(config-rtr)# exit
+R3(config)# interfaz g0/0
+R3(config-if)# ipv6 ospf 10 area 2
+R3(config-if)# interfaz S0/0/1
+R3(config-if)# ipv6 ospf 10 area 0
+R3(config-if)# end
+```
+
+#### Sumarización de rutas en OSPF
+
+* En OSPFv2:
+```bash
+R1(config)# router ospf 10
+R1(config-router)# area 1 range 10.1.0.0 255.255.252.0
+R1(config-router)#
+```
+> * Con esta configuración se resumen las dos rutas internas del área 1 en una ruta resumida interárea OSPF en el R1. La ruta resumida 10.1.0.0/22 resume cuatro direcciones de red: de la 10.1.0.0/24 a la 10.1.3.0/24.
+> * Esto se realizar en los routers ABR (frontera entre varias áreas) para optimizar el enrutamiento.
+
+* En OSPFv3:
+```bash
+device# configure terminal
+device(config)# ipv6 router ospf
+device(config-ospf6-router)# area 3 range 2001:db8:8::/45 advertise
+```
