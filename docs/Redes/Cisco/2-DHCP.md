@@ -44,7 +44,7 @@ En IPv6 la configuración de direccionamiento de los hosts se puede configurar d
 ``` bash
 Router(config)# ipv6 unicast-routing
 Router(config)# ipv6 dhcp pool POOL-LAN-1
-Router(config-dhcpv6)# address 2001:1DB8:CAFE::/64
+Router(config-dhcpv6)# address prefix 2001:1DB8:CAFE::/64
 Router(config-dhcpv6)# dns-server 2001:1DB8:CAFE::6
 Router(config-dhcpv6)# domain-name xunta.gal
 Router(config-dhcpv6)# interface G0/0

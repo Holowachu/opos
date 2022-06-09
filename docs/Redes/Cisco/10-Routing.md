@@ -67,4 +67,38 @@ Router(config)# ip route ::/0 2001:db8:c::9f:35
 | RIP | 120 |
 | EIGRP externo | 170 |
 | Inalcanzable | 255 |
+
 > Es habitual configurar lo que se denomina como rutas estáticas flotantes, las cuales especifican una distancia superior a las aprendidas por protocolos dinámicos como 210, con lo cual sólo se emplearán si no descubrimos una mejor hacia dicho destino.
+
+
+## Enrutamiento dinámico
+
+### Configuración básica de RIP en IPv4
+
+```bash
+Router(config)# router rip
+Router(config-router)# network 192.168.1.0 
+Router(config-router)# network 200.200.1.0
+Router(config-router)# version 2
+Router(config-router)# no auto-summary
+Router(config-router)# passive-interface Fa0/0
+Router(config-router)# redistribute static
+```
+> * Debemos anunciar con el comando `network` todas las redes directamente conectadas que queramos anunciar además de **las redes que nos conectan con los demás routers RIP**.
+> * La versión 2 de RIP trabaja con redes sin clase a diferencia de la 1 que asume redes con clase y no propaga máscaras.
+> * El comando `no auto-summary` evita que RIP sumarice subredes en redes con clase a la hora de publicar rutas en límites de redes principales (por interfaces configuradas con redes con clase).
+> * Por ejemplo, un router con 2 subredes configuradas: 172.16.8.0/24 y 172.16.4.0/24 de clase B y una subred 10.2.0.0/16 de clase A. Cuando `auto-summary` esté habilitado, el router anunciará solo la red sumarizada con clase: 172.16.0.0/16 para las subredes de clase B a través de su interfaz de clase A, pero podemos forzarle a anunciar ambas subredes con el comando `no auto-summary`.
+> * El comando `passive-interface` indica las interfaces por las que no se difundirá tráfico de control RIP (habitualmente las de las redes LAN).
+> * El comando `redistribute` se emplea para que RIP redistribuya rutas aprendidas por otros medios como estáticas (`static`), OSPF (`ospf`)...
+
+### Configuración básica de RIP en IPv6
+
+```bash
+Router(config)# ipv6 unicast-routing
+Router(config)# ipv6 router rip proceso1
+Router(config-router)# exit
+Router(config)# interface FastEthernet0/0
+Router(config-if)# ipv6 address 2001:DB8::/64 eui-64
+Router(config-if)# ipv6 rip process1 enable
+```
+> * 
