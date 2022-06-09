@@ -16,6 +16,7 @@ Para que una ruta sea agregada a la tabla de enrutamiento debe cumplir dos cosas
 * Para el ip route que usa la IP del next-hop del siguiente router, el router local debe tener una ruta para alcanzar la dirección del next-hop.
 
 El proceso seguido por el router para construir su tabla de rutas es:
+
 * Se introducen las rutas de las redes directamente conectadas (una para la IP de la interfaz y otra para la red).
 * Se introducen las rutas estáticas en la tabla siempre que cumplan las condiciones anteriores.
 * Se introducen las rutas aprendidas por protocolos dinámicos (RIP, OSPF...).

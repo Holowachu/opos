@@ -187,7 +187,7 @@ Router(config)# ip nat inside source static tcp 172.16.0.2 8080 80.0.0.1 80
 
 ## Ejemplo combinado de PAT con múltiples direcciones y reenvío de puertos
 ![PAT](PAT.png)
-> * En este ejemplo queremos que la red privada 192.168.10.0/24 salga hacia afuera nateada por el rango público: 11.11.11.1 ~ 10.10.10.5
+> * En este ejemplo queremos que la red privada 192.168.10.0/24 salga hacia afuera nateada por el rango público: 11.11.11.1 ~ 11.11.11.5
 > * A su vez, el Router1 deberá hacer un reenvío de puertos de tal modo que el servidor web ubicado en la red privada 172.16.0.0/16 con IP privada 172.16.0.200 sea accesible a través de la IP pública 20.20.20.1
 
 * Configuración del Router0:
@@ -196,6 +196,7 @@ Router0(config)# ip access-list standard Red_interna
 Router0(config-std-nacl)# permit 192.168.10.0 0.0.0.255
 Router0(config-std-nacl)# exit
 Router0(config)# ip nat pool POOL1 11.11.11.1 11.11.11.5 netmask 255.255.255.0
+Router0(config)# ip nat inside source list Red_interna pool POOL1 overload
 Router0(config)# ip route 20.20.20.1 255.255.255.255 100.0.0.2
 Router0(config)# interface GigabitEthernet0/0
 Router0(config-if)# ip address 192.168.10.1 255.255.255.0
