@@ -103,7 +103,7 @@ Router(config)# interface FastEthernet0/0
 Router(config-if)# ipv6 address 2001:DB8::/64 eui-64
 Router(config-if)# ipv6 rip proceso-rip enable
 ```
-> * Debemos activar proceso en todas las interfaces donde se encuentren las redes que queramos publicar y en las que comunican con otros routers.
+> * Debemos activar el proceso RIP en todas las interfaces donde se encuentren las redes que queramos publicar y en las que comunican con otros routers.
 
 ### OSPF
 
