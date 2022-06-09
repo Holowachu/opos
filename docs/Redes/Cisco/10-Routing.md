@@ -211,5 +211,5 @@ R1(config-router)#
 ```bash
 device# configure terminal
 device(config)# ipv6 router ospf
-device(config-ospf6-router)# area 3 range 2001:db8:8::/45 advertise
+device(config-ospf6-router)# area 3 range 2001:db8:8::/45
 ```
