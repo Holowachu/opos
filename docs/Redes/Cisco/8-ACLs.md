@@ -21,18 +21,18 @@ Router(config)# ip access-list [standard | extended] name
 ```bash
 Router(config-std-nacl)# [permit | deny | remark] {source [source-wildcard]} [log]
 ```
-> * *permit* → Permite
-> * *deny* → Deniega
-> * *remark* → Añade un comentario a la ACL
-> * *source* → IP de la red origen (si es una única IP se puede preceder de la palabra clave *host* y omitimos la wildcard)
-> * *log* → Genera un mensaje de log
+> * `permit` → Permite
+> * `deny` → Deniega
+> * `remark` → Añade un comentario a la ACL
+> * `source` → IP de la red origen (si es una única IP se puede preceder de la palabra clave *host* y omitimos la wildcard)
+> * `log` → Genera un mensaje de log
 
 * Aplicar ACL a interfaz de un router:
 ```bash
 Router(config-if)# ip access-group name [in | out]
 ```
-> * *in* → Se aplica en entrada
-> * *out* → Se aplica en salida
+> * `in` → Se aplica en entrada (paquetes recibidos por una interfaz)
+> * `out` → Se aplica en salida (paquetes reenviados por una interfaz de salida *tras enrutarlo*)
 
 * Ejemplo ACL estándar:
 ```bash
@@ -62,9 +62,9 @@ R1(config-line)# access-class ACL_1 in
 ```bash
 {deny | permit | remark text} protocol source source-wildcard [operator {port}] destination destination-wildcard [operator {port}] [established] [log]
 ```
-> * *protocol* → ip, icmp, tcp, udp... 
-> * *operator* → lt (less than), gt (greater than), eq (equal), neq (not equal)
-> * *established* → Conexión establecida (**solo para TCP!**)
+> * `protocol` → ip, icmp, tcp, udp... 
+> * `operator` → lt (less than), gt (greater than), eq (equal), neq (not equal)
+> * `established` → Conexión establecida (**solo para TCP!**)
 
 
 * Ejemplo ACL extendida:
