@@ -195,7 +195,7 @@ Router(config)# ip nat inside source static tcp 172.16.0.2 8080 80.0.0.1 80
 Router0(config)# ip access-list standard Red_interna
 Router0(config-std-nacl)# permit 192.168.10.0 0.0.0.255
 Router0(config-std-nacl)# exit
-Router0(config)# ip nat pool POOL1 11.11.11.1 11.11.11.5 netmask 255.255.255.0
+Router0(config)# ip nat pool POOL1 11.11.11.1 11.11.11.5 netmask 255.255.255.248
 Router0(config)# ip nat inside source list Red_interna pool POOL1 overload
 Router0(config)# ip route 20.20.20.1 255.255.255.255 100.0.0.2
 Router0(config)# interface GigabitEthernet0/0
@@ -207,8 +207,8 @@ Router0(config-if)# ip nat outside
 ```
 * Configuración del Router1:
 ```bash
-Router1(config)# ip nat inside source static tcp 172.16.0.200 80 20.20.20.1 80 
-Router1(config)# ip route 10.10.10.0 255.255.255.0 100.0.0.1 
+Router1(config)# ip nat inside source static tcp 172.16.0.200 80 20.20.20.1 80
+Router1(config)# ip route 11.11.11.0 255.255.255.248 100.0.0.1
 Router1(config)# interface GigabitEthernet0/0
 Router1(config-if)# ip address 172.16.0.1 255.255.0.0
 Router1(config-if)# ip nat inside
