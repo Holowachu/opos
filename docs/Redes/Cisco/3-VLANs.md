@@ -57,7 +57,7 @@ S1(config-vlan)# name nativa
 S1(config)# interface Fa0/18
 S1(config-if)# switchport mode trunk
 S1(config-if)# switchport trunk native vlan 99
-S1(config-if)# switchport trunk allowed-vlan vlan 10,20,30,99
+S1(config-if)# switchport trunk allowed vlan 10,20,30,99
 S1(config-if)# end
 ```
 > La vlan nativa solo se debe meter en la vlan-list del `allowed-vlan` en caso de cambiarla.
