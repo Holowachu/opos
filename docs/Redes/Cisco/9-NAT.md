@@ -208,6 +208,7 @@ Router0(config-if)# ip nat outside
 * Configuración del Router1:
 ```bash
 Router1(config)# ip nat inside source static tcp 172.16.0.200 80 20.20.20.1 80
+Router1(config)# ip nat inside source static tcp 172.16.0.200 443 20.20.20.1 443
 Router1(config)# ip route 11.11.11.0 255.255.255.248 100.0.0.1
 Router1(config)# interface GigabitEthernet0/0
 Router1(config-if)# ip address 172.16.0.1 255.255.0.0
