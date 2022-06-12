@@ -82,7 +82,7 @@ Router(config-if)# ip nat outside
 ### **Configuración de PAT: conjunto de direcciones**
 1. Crear un pool con las direcciones a las que vamos a natear.
 ```bash
-ip nat pool name ip-inicial ip-final {netmask máscara-de-red | prefix-length longitud-de-prefijo}
+ip nat pool nombre-pool ip-inicial ip-final {netmask máscara-de-red | prefix-length longitud-de-prefijo}
 ```
 2. Crear una ACL estándar para permitir la traducción de esas direcciones.
 ```bash
@@ -91,7 +91,7 @@ ip access-list standard nombre-de-lista-de-acceso
 ```
 3. Vincular la ACL al pool.
 ```bash
-ip nat inside source list número-de-lista-de-acceso pool nombre overload
+ip nat inside source list nombre-de-lista-de-acceso pool nombre-pool overload
 ```
 > La palabra clave **overload** es la que indica que se realice la sobrecarga (PAT).
 4. Identificar las interfaces internas y externas.
@@ -131,7 +131,7 @@ ip access-list standard nombre-de-lista-de-acceso
 ```
 2. Establecer la traducción de origen dinámica, especificar la ACL, la interfaz de salida y la opción de sobrecarga.
 ```bash
-ip nat inside source list número-de-lista-de-acceso interface type nombre overload
+ip nat inside source list nombre-de-lista-de-acceso interface tipo-de-interfaz número-de-interfaz overload
 ```
 4. Identificar las interfaces internas y externas.
 ```bash
