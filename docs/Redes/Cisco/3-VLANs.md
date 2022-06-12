@@ -57,7 +57,7 @@ S1(config-vlan)# name nativa
 S1(config)# interface Fa0/18
 S1(config-if)# switchport mode trunk
 S1(config-if)# switchport trunk native vlan 99
-S1(config-if)# switchport trunk allowed vlan 10,20,30,99
+S1(config-if)# switchport trunk allowed-vlan 10,20,30,99
 S1(config-if)# end
 ```
 > La vlan nativa solo se debe meter en la vlan-list del `allowed-vlan` en caso de cambiarla.
@@ -159,7 +159,7 @@ S1(config-if)# switchport mode access
 S1(config-if)# switchport access vlan 20
 S1(config-if)# interface Fa1/0/1
 S1(config-if)# switchport mode trunk
-S1(config-if)# switchport trunk allowed vlan 10,20
+S1(config-if)# switchport trunk allowed-vlan 10,20
 S1(config-if)# end
 ```
 > En caso de tener en cuenta la VLAN nativa para que la configuración del trunk contra el router fuese completamente correcta, habría que crear una subinterfaz dedicada para esta interfaz y emplear el comando `encapsulation dot1q 99 native` (suponiendo que sea la 99) y asignarle una IP, o bien configurar una IP directamente en la interfaz global (no en una subinterfaz).
