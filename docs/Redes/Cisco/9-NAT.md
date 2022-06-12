@@ -49,7 +49,7 @@ ip access-list standard nombre-de-lista-de-acceso
 ```
 3. Vincular la ACL al pool.
 ```bash
-ip nat inside source list número-de-lista-de-acceso pool nombre-pool
+ip nat inside source list nombre-de-lista-de-acceso pool nombre-pool
 ```
 4. Identificar las interfaces internas y externas.
 ```bash
