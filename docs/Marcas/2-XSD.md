@@ -125,14 +125,31 @@ elementFormDefault="qualified">
 ```
 Los tipos de datos definidos por XSD son los mismos que ya vimos para los elementos.
 
-### Atributos opcionales y obligatorios
+### Atributos opcionales, obligatorios y prohibidos
 ``` xml title="required.xsd" linenums="1"
 <xs:attribute name="lang" type="xs:string" use="required"/>
 ```
-**use** puede tomar los siguiente valores:
+**`use`** puede tomar los siguiente valores:
 
-* required - Atributo obligatorio.
-* optional - Atributo opcional.
+* `required` - Atributo obligatorio.
+* `optional` - Atributo opcional.
+* `prohibited` - Atributo prohibido (no puede usarse).
+
+### Reutilización de atributos
+
+``` xml title="refAttribute.xsd" linenums="1"
+<xs:attribute name="mybaseattribute">
+  <xs:simpleType>
+   <xs:restriction base="xs:integer">
+      <xs:maxInclusive value="1000"/>
+   </xs:restriction>
+  </xs:simpleType>
+</xs:attribute>
+<xs:complexType name="myComplexType">
+  <xs:attribute ref="mybaseattribute"/>
+</xs:complexType>
+```
+> Podemos definir un atributo aislado para después reutilizarlo en la definición de varios tipos complejos mediante el atributo `ref`.
 
 ## Elementos complejos
 Un elemento complejo es todo aquel que contenga otros elementos y/o atributos. Por tanto, al no existir un tipo simple de datos predefinido que se amolde a nuestro elemento, debemos definir un tipo complejo de datos (complexType).
@@ -322,6 +339,23 @@ Limitan los valores posibles al conjunto definido en el enumerado.
 </xs:simpleType>
 ```
 
+``` xml title="enumeration.xsd" linenums="1"
+<xs:simpleType name="Sizes">
+      <xs:restriction base="xs:decimal">
+         <xs:enumeration value="10.5"/>
+         <xs:enumeration value="9"/>
+         <xs:enumeration value="8"/>
+         <xs:enumeration value="11"/>
+      </xs:restriction>
+   </xs:simpleType>   
+
+   <xs:attribute name="shoeSizes">
+      <xs:simpleType>
+         <xs:list itemType="Sizes"/>
+      </xs:simpleType>
+   </xs:attribute>
+```
+> Permitiría una lista de valores al atributo como: `shoeSizes="10.5 9 8 11"`.
 ### Restricciones por longitud
 
 * **length** - Longitud exacta.
@@ -356,6 +390,26 @@ Limita los valores posibles a aquellos que cumplan un determinado patrón. Con e
       <xs:pattern value="([0-9]{8}[A-Z]{1})" />
     </xs:restriction>
 </xs:simpleType>
+```
+
+### Restricciones de uso de atributos
+
+Limita el uso de los atributos definidos para un tipo base.
+
+``` xml title="required.xsd" linenums="1"
+<xs:complexType name="A">
+  <xs:attribute name="x" type="xs:integer"/>
+  <xs:attribute name="y" type="xs:integer"/>
+</xs:complexType>
+
+<xs:complexType name="B">
+  <xs:complexContent>
+    <xs:restriction base="xs:A">
+      <xs:attribute name="x" use="required" />
+      <xs:attribute name="y" use="prohibited"/>
+    </xs:restriction>
+  </xs:complexContent>
+</xs:complexType>
 ```
 
 ## Tipos union
