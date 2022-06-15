@@ -268,8 +268,9 @@ Se usan en general para añadir nuevos elementos o atributos a cualquier tipo de
 <xs:element name="distancia">
   <xs:complexType>
     <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="unidad" type="xs:string"/> </xs:extension>
+      <xs:extension base="xs:double">
+        <xs:attribute name="unidad" type="xs:string"/>
+      </xs:extension>
      </xs:simpleContent>
   </xs:complexType>
 </xs:element>
@@ -545,7 +546,7 @@ elemento reserva_salón. Defina tamén o grupo creado.
 --8<-- "./data/marcas/xsd/ordenadores.xml"
 ```
 
-Partiendo del documento XML anterior, crea los elementos del XML Schema necesarios para realizar las si- guientes tareas:
+Partiendo del documento XML anterior, crea los elementos del XML Schema necesarios para realizar las siguientes tareas:
 
 1. Definir el elemento sistemaOperativo (el que es hijo de ordenadores). El atributo codigo contiene una cadena de caracteres.
 2. Definir el elemento del XML Schema que permita comprobar que los ordenadores utilicen el software existente en el documento XML.

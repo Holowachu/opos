@@ -1,0 +1,43 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "138.3.245.35",
+            "port": 3305,
+            "driver": "MySQL",
+            "name": "Vic_AMD_1_MySQL",
+            "database": "Alumnos",
+            "username": "root",
+            "password": "passwd"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "138.3.245.35",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "Vic_AMD_1",
+            "database": "articulos",
+            "username": "root",
+            "password": "passwd"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "130.61.201.198",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "Fer_Server",
+            "database": "articulos",
+            "username": "opo",
+            "password": "opocompis"
+        }
+    ]
+}
