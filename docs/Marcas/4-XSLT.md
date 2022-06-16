@@ -434,7 +434,8 @@ En el siguiente ejemplo deseamos transformar el XML indicado en una página web 
 ``` xml title="comercio.xml" linenums="1"
 --8<-- "./data/marcas/xslt/comercio.xsl"
 ```
-> Nótese que la plantilla `sum` emplea llamadas recursivas para calcular el total de cada compra.
+> * La plantilla `sum` emplea llamadas recursivas para calcular el total de cada compra.
+> * Nótese que la en XSLT la función `current()` hace referencia al nodo que se está procesando en cada iteración de un `for-each`.
 
 ## Ejercicios de exámen resueltos
 
