@@ -431,7 +431,7 @@ En el siguiente ejemplo deseamos transformar el XML indicado en una página web 
 --8<-- "./data/marcas/xslt/comercio.xml"
 ```
 
-``` xml title="comercio.xml" linenums="1"
+``` xml title="comercio.xsl" linenums="1"
 --8<-- "./data/marcas/xslt/comercio.xsl"
 ```
 > * La plantilla `sum` emplea llamadas recursivas para calcular el total de cada compra.
