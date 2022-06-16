@@ -21,7 +21,7 @@
                 <xsl:for-each select="//cliente">
                             <xsl:sort select="@ID" />
                             <h2><xsl:value-of select="concat(nombre,' (', @ID, ')')"/></h2>
-                            <xsl:for-each select="current()//compra">
+                            <xsl:for-each select=".//compra">
                                 <h3>Compra realizada el <xsl:value-of select="@fecha"/></h3>
                                 <table>
                                     <thead>
