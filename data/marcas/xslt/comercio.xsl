@@ -32,11 +32,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <xsl:for-each select="current()//articulo">
+                                        <xsl:for-each select=".//articulo">
                                             <tr>
-                                                <td><xsl:value-of select="/comercio//producto[@ID = current()/producto]/nombreProducto"/></td>
+                                                <td><xsl:value-of select="//producto[@ID = current()/producto]/nombreProducto"/></td>
                                                 <td><xsl:value-of select="cantidad"/></td>
-                                                <td><xsl:value-of select="/comercio//producto[@ID = current()/producto]/precio"/></td>
+                                                <td><xsl:value-of select="//producto[@ID = current()/producto]/precio"/></td>
                                             </tr>
                                         </xsl:for-each>
                                     </tbody>
