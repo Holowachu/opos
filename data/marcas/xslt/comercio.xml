@@ -69,12 +69,10 @@
                     <articulos>
                         <articulo>
                             <producto>200001</producto>
-                            <precio>59.95</precio>
                             <cantidad>1</cantidad>
                         </articulo>
                         <articulo>
                             <producto>100001</producto>
-                            <precio>284</precio>
                             <cantidad>1</cantidad>
                         </articulo>
                     </articulos>
