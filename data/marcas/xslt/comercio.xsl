@@ -68,7 +68,7 @@
         <xsl:if test="$current"> 
             <xsl:call-template name="sum">
                 <xsl:with-param name="nodes" select="$nodes[position() &gt; 1]" />
-                <xsl:with-param name="sum" select="$sum + $current/cantidad *  /comercio//producto[@ID = $current/producto]/precio" />
+                <xsl:with-param name="sum" select="$sum + $current/cantidad *  //producto[@ID = $current/producto]/precio" />
             </xsl:call-template>
         </xsl:if>
 
