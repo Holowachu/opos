@@ -54,12 +54,12 @@ XSLT se emplea como una hoja de estilos aplicada a un documento XML. Esta hoja d
 </xsl:template>
 ```
 
-## Formato del documento de salida: **<xsl:output\>**
+## Formato del documento de salida: **`<xsl:output>`**
 
-La instrucción **<xsl:output\>** define el formato del documento de salida. Aunque ofrece multitud de atributos para su configuración, nos centraremos en 2:
+La instrucción **`<xsl:output>`** define el formato del documento de salida. Aunque ofrece multitud de atributos para su configuración, nos centraremos en 2:
 
-* *indent* --> Puede tomar los valores "yes" o "no" e indica si la salida estará indentada conforme a su jerarquía.
-* *method* --> Define el formato de salida. Puede tomar los siguiente valores: *xml*|*html*|*text*|*name*. Aunque lo habitual será XML o HTML.
+* `indent` → Puede tomar los valores "yes" o "no" e indica si la salida estará indentada conforme a su jerarquía.
+* `method` → Define el formato de salida. Puede tomar los siguiente valores: `xml|html|text|name`. Aunque lo habitual será XML o HTML.
 
 ```xml title="ejemplo.xsl"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -87,7 +87,7 @@ La instrucción **<xsl:output\>** define el formato del documento de salida. Aun
 </xsl:template>
 ```
 
-## La instrucción **<xsl:value-of\>**
+## La instrucción **`<xsl:value-of>`**
 
 Extrae el contenido del nodo seleccionado mediante la expresión XPath utilizada en el atributo select.
 
@@ -139,12 +139,12 @@ Extrae el contenido del nodo seleccionado mediante la expresión XPath utilizada
     Mario Vargas Llosa
     1969
 ```
-*Además de los valores seleccionados del atributo año, el resultado incluye el contenido de los elementos título y autor (y el salto de línea del raíz), pues no hay template definido para ellos, pero sí son procesados (son hermanos de fechaPublicacion).
+> Además de los valores seleccionados del atributo año, el resultado incluye el contenido de los elementos título y autor (y el salto de línea del raíz), pues no hay template definido para ellos, pero sí son procesados (son hermanos de fechaPublicacion).
 
 
-## Aplicar reglas a subnodos: la instrucción **<xsl:apply-templates\>**
+## Aplicar reglas a subnodos: la instrucción **`<xsl:apply-templates>`**
 
-La instrucción **<xsl:apply-templates\>** hace que se apliquen a los subelementos las reglas que les sean aplicables.
+La instrucción **`<xsl:apply-templates>`** hace que se apliquen a los subelementos las reglas que les sean aplicables.
 
 ```xml title="biblioteca.xml"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -193,12 +193,12 @@ La instrucción **<xsl:apply-templates\>** hace que se apliquen a los subelement
   <p>Mario Vargas Llosa</p>
 </html>
 ```
-La primera regla sustituye el elemento raíz (y todos sus subelementos) por las etiquetas <html\> y <h1\>, pero además aplica a los subelementos las reglas que les son aplicables. En este caso, sólo hay una regla para los elementos <libro\> que generan los párrafos.
+> La primera plantilla sustituye el elemento raíz (y todos sus subelementos) por las etiquetas `<html>` y `<h1>`, pero además aplica a los subelementos las plantillas que les son aplicables. En este caso, sólo hay una plantilla para los elementos `<libro>` que generan los párrafos.
 
 
-## Generación de elementos: **<xsl:element\>**
+## Generación de elementos: **`<xsl:element>`**
 
-Dentro de un patrón podemos emplear **<xsl:element\>** para crear un nuevo elemento en el documento de salida. Es obligatorio indicar el nombre del nuevo elemento mediante el atributo *name*.
+Dentro de un patrón podemos emplear **`<xsl:element>`** para crear un nuevo elemento en el documento de salida. Es obligatorio indicar el nombre del nuevo elemento mediante el atributo `name`.
 
 ``` xml title="element.xsl"
 <?xml version="1.0" encoding="utf-8"?>
@@ -208,12 +208,12 @@ Dentro de un patrón podemos emplear **<xsl:element\>** para crear un nuevo ele
   </xsl:template>
 </xsl:stylesheet>
 ```
-*Este ejemplo reemplazaría el elemento ciclo por uno con el nombre "ciclo_asir".
+> Este ejemplo reemplazaría el elemento ciclo por uno con el nombre `ciclo_asir`.
 
 
-## Generación de atributos: **<xsl:attribute\>**
+## Generación de atributos: **`<xsl:attribute>`**
 
-Cuando creamos un nuevo elemento en el documento de salida empleando **<xsl:element\>**, también podemos especificar sus atributos. Simplemente tendremos que añadir como hijos de este tantos elementos **<xsl:attribute\>** como necesitemos, indicando en cada uno de ellos su nombre con el atributo "name". Su valor será el texto que contenga.
+Cuando creamos un nuevo elemento en el documento de salida empleando **`<xsl:element>`**, también podemos especificar sus atributos. Simplemente tendremos que añadir como hijos de este tantos elementos **`<xsl:attribute>`** como necesitemos, indicando en cada uno de ellos su nombre con el atributo `name`. Su valor será el texto que contenga.
 
 ``` xml title="attribute.xsl"
 <?xml version="1.0" encoding="utf-8"?>
@@ -229,9 +229,9 @@ Cuando creamos un nuevo elemento en el documento de salida empleando **<xsl:elem
 ```
 
 ## Bucles
-### Recorrido de nodos: **<xsl:for-each\>**
+### Recorrido de nodos: **`<xsl:for-each>`**
 
-El elemento **<xsl:for-each\>** permite procesar todos los elementos XML de un conjunto de nodos específico.
+El elemento **`<xsl:for-each>`** permite procesar todos los elementos XML de un conjunto de nodos específico.
 
 ```xml title="biblioteca.xml"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -283,13 +283,13 @@ El elemento **<xsl:for-each\>** permite procesar todos los elementos XML de un c
 </xsl:stylesheet>
 ```
 
-### Ordenación: **<xsl:sort\>**
+### Ordenación: **`<xsl:sort>`**
 
-El elemento **<xsl:sort\>** permite ordenar la salida generada por un **<xsl:for-each\>** en base a algún campo de los elementos procesados. Los atributos que permiten su configuración son:
+El elemento **`<xsl:sort>`** permite ordenar la salida generada por un **`<xsl:for-each>`** en base a algún campo de los elementos procesados. Los atributos que permiten su configuración son:
 
-* *order* --> Indica si se desea ordenación ascendente ("ascending") o descendente ("descending").
-* *data-type* --> Indica si se desea una ordenación alfabética ("text") o numérica ("number").
-* *select* --> Indica el campo en base al cuál se ordenará.
+* `order` → Indica si se desea ordenación ascendente (`ascending`) o descendente (`descending`).
+* `data-type` → Indica si se desea una ordenación alfabética (`text`) o numérica (`number`).
+* `select` → Indica el campo en base al cuál se ordenará.
 
 ``` xml title="sort.xsl"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -322,8 +322,8 @@ El elemento **<xsl:sort\>** permite ordenar la salida generada por un **<xsl:for
 
 ## Condiciones
 
-### **<xsl:if\>**
-El elemento **<xsl:if\>** nos permite crear condiciones. El elemento consta de un atributo obligatorio test, cuyo valor contiene la expresión que se evaluará en el documento de origen. A diferencia de otros lenguajes de programación, en XSLT no se da ninguna conexión entre IF y ELSE.
+### **`<xsl:if>`**
+El elemento **`<xsl:if>`** nos permite crear condiciones. El elemento consta de un atributo obligatorio test, cuyo valor contiene la expresión que se evaluará en el documento de origen. A diferencia de otros lenguajes de programación, en XSLT no se da ninguna conexión entre IF y ELSE.
 
 ```xml title="biblioteca.xml"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -380,11 +380,11 @@ El elemento **<xsl:if\>** nos permite crear condiciones. El elemento consta de u
 </xsl:stylesheet>
 ```
 
-### **<xsl:choose\>**
+### **`<xsl:choose>`**
 
-El elemento **<xsl:choose\>** con sus elementos secundarios **<xsl:when\>** y **<xsl:otherwise\>** se corresponde con la estructura condicional switch/case en otros lenguajes de programación.
+El elemento **`<xsl:choose>`** con sus elementos secundarios **`<xsl:when>`** y **`<xsl:otherwise>`** se corresponde con la estructura condicional `switch-case` en otros lenguajes de programación.
 
-Esta estructura permite establecer varias condiciones. Además, se puede fijar un valor, que se asignará en caso de ninguna de éstas se cumpla. La estructura debe comenzar con el elemento **<xsl:choose\>**. El elemento puede contener tantos elementos secundarios **<xsl:when\>** como se desee y un único elemento **<xsl:otherwise\>**.
+Esta estructura permite establecer varias condiciones. Además, se puede fijar un valor, que se asignará en caso de que ninguna de éstas se cumpla. La estructura debe comenzar con el elemento **`<xsl:choose>`**. El elemento puede contener tantos elementos secundarios **`<xsl:when>`** como se desee y un único elemento **`<xsl:otherwise>`** final.
 
 ``` xml title="choose.xsl"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -410,7 +410,7 @@ Esta estructura permite establecer varias condiciones. Además, se puede fijar u
                   <xsl:when test="@idioma='es'"><td>Español</td></xsl:when>
                   <xsl:when test="@idioma='en'"><td>Inglés</td></xsl:when>
                   <xsl:when test="@idioma='de'"><td>Alemán</td></xsl:when>
-                  <xsl:otherwise>Otro</xsl:otherwise>
+                  <xsl:otherwise><td>Otro</td></xsl:otherwise>
              </xsl:choose>
           </tr>
         </xsl:for-each>

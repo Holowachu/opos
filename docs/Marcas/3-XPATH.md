@@ -40,9 +40,9 @@ Un documento XML puede representarse como un árbol dirigido, considerando por e
 
 Una expresión XPath simple consta de 3 pasos de localización:
 
-* Eje --> Indica con respecto al nodo contexto el conjunto de nodos sobre los cuales se evaluará el test de nodo.
-* Test de nodo --> Sirve para, una vez identificado un conjunto de nodos con el eje adecuado, especificar exactamente que nodos de ese conjunto son los que queremos.
-* Predicado --> Son condiciones que deben cumplir los nodos a seleccionar.
+* Eje → Indica con respecto al nodo contexto el conjunto de nodos sobre los cuales se evaluará el test de nodo.
+* Test de nodo → Sirve para, una vez identificado un conjunto de nodos con el eje adecuado, especificar exactamente que nodos de ese conjunto son los que queremos.
+* Predicado → Son condiciones que deben cumplir los nodos a seleccionar.
 
 ``` xslt
 eje::test-nodo[predicado]
@@ -50,19 +50,19 @@ eje::test-nodo[predicado]
 
 ### Ejes
 
-* **self** --> El propio nodo contexto.
-* **child** --> Los hijos del nodo contexto.
-* **parent** --> El padre del nodo contexto.
-* **ancestor** --> Los antepasados del nodo contexto.
-* **ancestor-or-self** --> El nodo contexto y sus antepasados.
-* **descendant** --> Los descendientes del nodo contexto.
-* **descendant-or-self** --> El nodo contexto y sus descendientes.
-* **following** --> Los nodos siguientes al nodo contexto, sin descendientes.
-* **following-sibling** --> Los nodos del mismo nivel que siguen al nodo contexto.
-* **preceding** --> Los nodos anteriores al nodo contexto, sin antepasados.
-* **preceding-sibling** --> Los nodos del mismo nivel que preceden al nodo contexto.
-* **attribute** --> Los nodos atributo del nodo contexto.
-* **namespace** --> Los nodos de espacio de nombres del nodo contexto.
+* **self** → El propio nodo contexto.
+* **child** → Los hijos del nodo contexto.
+* **parent** → El padre del nodo contexto.
+* **ancestor** → Los antepasados del nodo contexto.
+* **ancestor-or-self** → El nodo contexto y sus antepasados.
+* **descendant** → Los descendientes del nodo contexto.
+* **descendant-or-self** → El nodo contexto y sus descendientes.
+* **following** → Los nodos siguientes al nodo contexto, sin descendientes.
+* **following-sibling** → Los nodos del mismo nivel que siguen al nodo contexto.
+* **preceding** → Los nodos anteriores al nodo contexto, sin antepasados.
+* **preceding-sibling** → Los nodos del mismo nivel que preceden al nodo contexto.
+* **attribute** → Los nodos atributo del nodo contexto.
+* **namespace** → Los nodos de espacio de nombres del nodo contexto.
 
 Si no se indica un eje explícitamente, este toma el valor de "child".
 
@@ -127,12 +127,12 @@ Si no se indica un eje explícitamente, este toma el valor de "child".
 
 Los test de nodo pueden ser:
 
-* nombre_de_un_nodo --> Selecciona todos los nodos con el nombre indicado. 
-* \* --> Selecciona todos los elementos y atributos.
-* node() --> Selecciona todos los nodos (de cualquier tipo).
-* text() --> Selecciona los nodos de texto.
-* comment() --> Selecciona los nodos de comentario.
-* processing-instructions() --> Selecciona los nodos de procesamiento de instrucciones.
+* `nombre_de_un_nodo` → Selecciona todos los nodos con el nombre indicado. 
+* `*` → Selecciona todos los elementos y atributos.
+* `node()` → Selecciona todos los nodos (de cualquier tipo).
+* `text()` → Selecciona los nodos de texto.
+* `comment()` → Selecciona los nodos de comentario.
+* `processing-instructions()` → Selecciona los nodos de procesamiento de instrucciones.
 
 
 ```xslt
@@ -167,13 +167,13 @@ Además existe la posibilidad de combinar los conjuntos de nodos devueltos por v
 
 El predicado es opcional, y se escribe entre corchetes, a continuación del test de nodo. Si el eje y el test de nodo han seleccionado unos nodos, el predicado permite restringir esa selección a los que cumplan determinadas condiciones.
 
-* [@atributo] --> Selecciona los elementos que tienen el atributo.
+* `[@atributo]` → Selecciona los elementos que tienen el atributo.
 ```xslt
 <!-- Selecciona los elementos "autor" con un atributo "fechaNacimiento" -->
 //autor[@fechaNacimiento]
 ```
 
-* [número] --> Si hay varios resultados selecciona uno de ellos por número de orden; el primero es el número 1 y **last()** selecciona el último de ellos.
+* `[número]` → Si hay varios resultados selecciona uno de ellos por número de orden; el primero es el número 1 y **last()** selecciona el último de ellos.
 ```xslt
 <!-- Selecciona el primer libro del documento -->
 //libro[1]
@@ -185,7 +185,7 @@ El predicado es opcional, y se escribe entre corchetes, a continuación del test
 //libro[last()-1]
 ```
 
-* [condicion] --> Selecciona los nodos que cumplen la condición.
+* `[condicion]` → Selecciona los nodos que cumplen la condición.
 En las condiciones se pueden utilizar los operadores siguientes:
 
 	* operadores lógicos: and, or, not()
@@ -210,52 +210,52 @@ con año de publicación 1973 -->
 
 ## Funciones
 
-* **not()** --> Devuelve verdadero si el valor del operando es falso, verdadero en caso contrario.
+* **`not()`** --> Devuelve verdadero si el valor del operando es falso, verdadero en caso contrario.
 ```xslt
 <!-- Selecciona los elementos "autor" sin atributo "fechaDefuncion" -->
 //autor[not(@fechaDefuncion)]
 ```
 
-* **ceiling()** --> Devuelve el primero entero mayor que el valor del parámetro.
+* **`ceiling()`** --> Devuelve el primero entero mayor que el valor del parámetro.
 ```xslt
 <!-- Devuelve 2 -->
 ceiling(3 div 2)
 ```
 
-* **floor()** --> Devuelve el primero entero menor que el valor del parámetro.
+* **`floor()`** --> Devuelve el primero entero menor que el valor del parámetro.
 ```xslt
 <!-- Devuelve 1 -->
 floor(3 div 2)
 ```
 
-* **round()** --> Devuelve el entero más próximo al valor del parámetro.
+* **`round()`** --> Devuelve el entero más próximo al valor del parámetro.
 ```xslt
 <!-- Devuelve 2 -->
 round(3 div 2)
 ```
 
-* **sum()** --> Devuelve la suma de los valores de los nodos que se pasan como parámetros.
+* **`sum()`** --> Devuelve la suma de los valores de los nodos que se pasan como parámetros.
 ```xslt
 <!-- Devuelve la suma del importe de todos los productos del XML -->
 sum(//producto/@importe)
 ```
 
-* **concat()** --> Concatena en una cadena todas las que se le pasan como parámetros.
+* **`concat()`** --> Concatena en una cadena todas las que se le pasan como parámetros.
 ```xslt
 concat("Don ", //autor/text())
 ```
 
-* **contains()** --> Devuelve verdadero si la primera cadena contiene a la segunda, falso en caso contrario.
+* **`contains()`** --> Devuelve verdadero si la primera cadena contiene a la segunda, falso en caso contrario.
 ```xslt
 contains(//nombre/ text(),"Uxío")
 ```
 
-* **starts-with()** --> Devuelve verdadero si la primera cadena comienza con la segunda, falso en caso contrario.
+* **`starts-with()`** --> Devuelve verdadero si la primera cadena comienza con la segunda, falso en caso contrario.
 ```xslt
 starts-with(//nombre/ text(),"V")
 ```
 
-* **string-length()** --> Devuelve el número de carácteres de la cadena.
+* **`string-length()`** --> Devuelve el número de carácteres de la cadena.
 ```xslt
 <!-- En Xpath 1.0 -->
 string-length(//nombre/text())
@@ -264,7 +264,7 @@ string-length(//nombre/text())
 //nombre/string-length(text())
 ```
 
-* **substring()** --> De la cadena que recibe como primero parámetro, devuelve tantos carácteres como indique el tercero parámetro, contando a partir de la posición que indique el segundo parámetro.
+* **`substring()`** --> De la cadena que recibe como primero parámetro, devuelve tantos carácteres como indique el tercero parámetro, contando a partir de la posición que indique el segundo parámetro.
 ```xslt
 <!-- Devuelve los 2 primeros caracteres del nombre -->
 
@@ -275,7 +275,7 @@ substring(//nome/text(), 1, 2)
 //nome/substring(text(), 1, 2)
 ```
 
-* **translate()** --> Devuelve la cadena del primer parámetro, sustituyendo todas las ocurrencias de los carácteres del segundo parámetro por los carácteres del tercero parámetro.
+* **`translate()`** --> Devuelve la cadena del primer parámetro, sustituyendo todas las ocurrencias de los carácteres del segundo parámetro por los carácteres del tercero parámetro.
 ```xslt
 <!-- En Xpath 1.0 -->
 translate(//dirección/text(),",","-")
@@ -284,12 +284,12 @@ translate(//dirección/text(),",","-")
 //dirección/translate(.,",","-")
 ```
 
-* **count()** --> Devuelve el número de nodos del conjunto de nodos.
+* **`count()`** --> Devuelve el número de nodos del conjunto de nodos.
 ```xslt
 count(//producto)
 ```
 
-* **name()** --> Devuelve el nombre calificado del primer nodo en el conjunto de nodos que se le pasa como parámetro.
+* **`name()`** --> Devuelve el nombre calificado del primer nodo en el conjunto de nodos que se le pasa como parámetro.
 ```xslt
 <!-- En Xpath 1.0 solo se aplica al primer nodo del set -->
 name(//nombre)
@@ -298,7 +298,7 @@ name(//nombre)
 //nombre/name()
 ```
 
-* **position()** --> Devuelve la posición (comenzando con 1) del nodo contexto en el conjunto de nodos del contexto actual.
+* **`position()`** --> Devuelve la posición (comenzando con 1) del nodo contexto en el conjunto de nodos del contexto actual.
 ```xslt
 <!-- Selecciona los 3 primeros autores -->
 //autor[position() <= 3]
