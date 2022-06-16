@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="comercio.xsl" ?>
+
+<comercio>
+    <catalogo>
+        <nombre>Catálogo 2022</nombre>
+        <fechaExpiracion>2022-06-03</fechaExpiracion>
+        
+        <productos>
+            <producto ID = "100001">
+                <nombreProducto>Nintendo Switch</nombreProducto>
+                <precio>284</precio>
+                <stock>55</stock>
+            </producto>
+            <producto ID = "100002">
+                <nombreProducto>PlayStation 5</nombreProducto>
+                <precio>499.99</precio>
+                <stock>0</stock>
+            </producto>
+            <producto ID = "100003">
+                <nombreProducto>PlayStation 5 - Digital Edition</nombreProducto>
+                <precio>399.99</precio>
+                <stock>0</stock>
+            </producto>
+            <producto ID = "100004">
+                <nombreProducto>Xbox Series X</nombreProducto>
+                <precio>499.99</precio>
+                <stock>64</stock>
+            </producto>
+            <producto ID = "200001" rel="100001">
+                <nombreProducto>The Legend of Zelda: Breath of the Wild</nombreProducto>
+                <precio>59.95</precio>
+                <stock>0</stock>
+            </producto>
+            <producto ID = "200002" rel="100002">
+                <nombreProducto>FIFA 22 Standard Edition</nombreProducto>
+                <precio>49.98</precio>
+                <stock>0</stock>
+            </producto>
+            <producto ID = "200003" rel="100001">
+                <nombreProducto>FIFA 22 Standard Edition</nombreProducto>
+                <precio>40.99</precio>
+                <stock>12</stock>
+            </producto>
+            <producto ID = "200004" rel="100004">
+                <nombreProducto>Elden Ring</nombreProducto>
+                <precio>69.00</precio>
+                <stock>47</stock>
+            </producto>
+            <producto ID = "200005" rel="100003">
+                <nombreProducto>Elden Ring</nombreProducto>
+                <precio>69.99</precio>
+                <stock>5</stock>
+            </producto>
+            <producto ID = "200006" rel="100001">
+                <nombreProducto>Pokémon Arceus</nombreProducto>
+                <precio>59.95</precio>
+                <stock>85</stock>
+            </producto>
+        </productos>
+    </catalogo>
+
+    <clientes>
+        <cliente ID="C001">
+            <nombre>Lola Mento</nombre>
+            <telefono>669456789</telefono>
+            <compras>
+                <compra fecha="06/12/2021">
+                    <articulos>
+                        <articulo>
+                            <producto>200001</producto>
+                            <precio>59.95</precio>
+                            <cantidad>1</cantidad>
+                        </articulo>
+                        <articulo>
+                            <producto>100001</producto>
+                            <precio>284</precio>
+                            <cantidad>1</cantidad>
+                        </articulo>
+                    </articulos>
+                </compra>
+            </compras>
+        </cliente>
+        <cliente ID="C002">
+            <nombre>Larry Capizza</nombre>
+            <telefono>986234512</telefono>
+            <compras>
+                <compra fecha="24/12/2021">
+                    <articulos>
+                        <articulo>
+                            <producto>200004</producto>
+                            <cantidad>1</cantidad>
+                        </articulo>
+                        <articulo>
+                            <producto>100004</producto>
+                            <cantidad>1</cantidad>
+                        </articulo>
+                    </articulos>
+                </compra>
+            </compras>
+        </cliente>
+        <cliente ID="C003">
+            <nombre>Cindy Nero</nombre>
+            <telefono>988324567</telefono>
+            <compras/>
+        </cliente>
+        <cliente ID="C004">
+            <nombre>Esteban Dido</nombre>
+            <telefono>982569801</telefono>
+            <compras>
+                <compra fecha="01/12/2021">
+                    <articulos>
+                        <articulo>
+                            <producto>200005</producto>
+                            <cantidad>3</cantidad>
+                        </articulo>
+                        <articulo>
+                            <producto>100003</producto>
+                            <cantidad>2</cantidad>
+                        </articulo>
+                    </articulos>
+                </compra>
+                <compra fecha="06/12/2021">
+                    <articulos>
+                        <articulo>
+                            <producto>200002</producto>
+                            <cantidad>5</cantidad>
+                        </articulo>
+                    </articulos>
+                </compra>
+            </compras>
+        </cliente>
+        <cliente ID="C005">
+            <nombre>Elvis Teck</nombre>
+            <telefono>654389712</telefono>
+            <compras>
+                <compra fecha="05/12/2021">
+                    <articulos>
+                        <articulo>
+                            <producto>200002</producto>
+                            <cantidad>1</cantidad>
+                        </articulo>
+                    </articulos>
+                </compra>
+            </compras>
+        </cliente>
+        
+    </clientes>
+        
+</comercio>

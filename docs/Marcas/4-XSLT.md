@@ -422,6 +422,20 @@ Esta estructura permite establecer varias condiciones. Además, se puede fijar u
 </xsl:stylesheet>
 ```
 
+## Llamar a plantillas con **`<xsl:call-template>`**
+Desde una plantilla podemos llamar a otra incluso pasándole una serie de parámetros como si de una función se tratara. Esto nos permite también realizar llamadas recursivas.
+
+En el siguiente ejemplo deseamos transformar el XML indicado en una página web HTML que muestre para cada cliente los detalles de las compras realizadas por el mismo, incluyendo el nombre, cantidad y precio unitario de cada artículo, así como el total de la compra.
+
+``` xml title="comercio.xml" linenums="1"
+--8<-- "./data/marcas/xslt/comercio.xml"
+```
+
+``` xml title="comercio.xml" linenums="1"
+--8<-- "./data/marcas/xslt/comercio.xsl"
+```
+> Nótese que la plantilla `sum` emplea llamadas recursivas para calcular el total de cada compra.
+
 ## Ejercicios de exámen resueltos
 
 ### Galicia 2021
