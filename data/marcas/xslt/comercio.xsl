@@ -32,7 +32,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <xsl:for-each select="//articulo">
+                                        <xsl:for-each select="current()//articulo">
                                             <tr>
                                                 <td><xsl:value-of select="/comercio//producto[@ID = current()/producto]/nombreProducto"/></td>
                                                 <td><xsl:value-of select="cantidad"/></td>
@@ -44,7 +44,7 @@
                                         <tr>
                                             <td colspan="3">
                                                 <xsl:call-template name="sum">
-                                                    <xsl:with-param name="nodes" select="//articulo"/>
+                                                    <xsl:with-param name="nodes" select="current()//articulo"/>
                                                 </xsl:call-template>
                                             </td>
                                         </tr>
